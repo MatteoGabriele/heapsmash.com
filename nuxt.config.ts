@@ -21,7 +21,7 @@ export default defineNuxtConfig({
       {
         name: "General Sans",
         provider: "fontshare",
-        weights: [400, 500, 600],
+        weights: [200, 400, 500],
       },
     ],
   },

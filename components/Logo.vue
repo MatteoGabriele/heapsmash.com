@@ -2,10 +2,10 @@
 
 <template>
   <NuxtLink
-    class="leading-0 text-2xl font-logo text-white flex items-center gap-1"
+    class="shrink-0 text-lg font-logo text-white flex items-center gap-1"
     to="/"
   >
-    <Icon name="game-icons:3d-hammer" />
-    <span class="text-lg">heapsmash</span>
+    <Icon class="text-xl text-neutral-400" name="mdi:buffer" />
+    heapsmash
   </NuxtLink>
 </template>
