@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme {
+  --font-logo: 'General Sans', sans-serif;
+  --text-sm: 0.813rem;
+}
+
+body {
+  @apply bg-neutral-800 text-neutral-200;
+}
+
+
