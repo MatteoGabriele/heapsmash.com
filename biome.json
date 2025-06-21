@@ -8,7 +8,7 @@
   "files": {
     "ignoreUnknown": false,
     "includes": [
-      "./composables/**/*.{ts|vue}",
+      "./composables/**/*.ts",
       "./tsconfig.json",
       "./server/**/*.{ts|vue}",
       "./components/**/*.{ts|vue}",

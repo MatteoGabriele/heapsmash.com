@@ -13,7 +13,7 @@
       </li>
       <li>
         <NuxtLink
-          class="text-sm text-neutral-300 rounded-2xl px-3 py-2 bg-blue-700 hover:bg-blue-600"
+          class="text-sm text-neutral-300 rounded-2xl px-3 py-2 bg-sky-700 hover:bg-sky-600"
           to="/users/signup"
         >
           Sign up

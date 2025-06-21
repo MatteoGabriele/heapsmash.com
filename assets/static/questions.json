@@ -1,0 +1,82 @@
+[
+  {
+    "id": "1",
+    "slug": "undefined-vs-null-javascript",
+    "title": "Why is 'undefined' not equal to 'null' in JavaScript?",
+    "excerpt": "I always assumed undefined and null were basically interchangeable in JavaScript, but I’ve noticed some unexpected behavior when comparing the two. Can someone clearly explain the core difference between them, how they’re treated by the engine, and any common pitfalls or best practices for working with both in modern JS?",
+    "votes": 42,
+    "answers": 3,
+    "views": 1024,
+    "tags": ["javascript", "types", "null", "undefined"],
+    "user": {
+      "name": "devDan",
+      "reputation": 1340,
+      "avatar": "https://example.com/avatars/devdan.png"
+    },
+    "timestamp": "2025-06-20T08:15:00Z"
+  },
+  {
+    "id": "2",
+    "slug": "debounce-function-in-react",
+    "title": "How do I debounce a function in React?",
+    "excerpt": "I'm working on a React component where the user types into a search field, and I want to avoid firing the API request on every keystroke. What’s the cleanest way to debounce the function, ideally using hooks? I've tried lodash but want a native or useEffect-based solution if possible.",
+    "votes": 29,
+    "answers": 4,
+    "views": 876,
+    "tags": ["react", "debounce", "hooks"],
+    "user": {
+      "name": "codeCleo",
+      "reputation": 2102,
+      "avatar": "https://example.com/avatars/codecleo.png"
+    },
+    "timestamp": "2025-06-19T18:44:00Z"
+  },
+  {
+    "id": "3",
+    "slug": "heap-out-of-memory-nodejs",
+    "title": "What does 'heap out of memory' mean in Node.js?",
+    "excerpt": "When I run a script that processes a large file or a long-running operation in Node.js, I keep running into a fatal error that says 'JavaScript heap out of memory'. What does this mean exactly, and how can I prevent it? Are there flags I should pass to Node or memory leaks to check for?",
+    "votes": 18,
+    "answers": 2,
+    "views": 623,
+    "tags": ["node.js", "memory", "heap"],
+    "user": {
+      "name": "stackSmash",
+      "reputation": 768,
+      "avatar": "https://example.com/avatars/stacksmash.png"
+    },
+    "timestamp": "2025-06-18T10:11:00Z"
+  },
+  {
+    "id": "4",
+    "slug": "useeffect-infinite-loop-react",
+    "title": "Why is useEffect causing an infinite loop?",
+    "excerpt": "My useEffect keeps running repeatedly even though I thought I set the dependency array correctly. I’m using a state update inside the effect and suspect that’s causing it. Can anyone help me understand how to break the loop and structure useEffect properly to only run once or when truly necessary?",
+    "votes": 35,
+    "answers": 5,
+    "views": 1143,
+    "tags": ["react", "useeffect", "infinite-loop"],
+    "user": {
+      "name": "hooksHannah",
+      "reputation": 952,
+      "avatar": "https://example.com/avatars/hookshannah.png"
+    },
+    "timestamp": "2025-06-20T02:39:00Z"
+  },
+  {
+    "id": "5",
+    "slug": "difference-between-equals-and-triple-equals",
+    "title": "What’s the difference between == and ===?",
+    "excerpt": "JavaScript has both == and === for comparisons, and I’ve seen both used in different places. I get that === is more strict, but what’s actually going on under the hood? Are there performance differences, or just safety ones? Would love a concise explanation and when each is appropriate.",
+    "votes": 50,
+    "answers": 6,
+    "views": 2105,
+    "tags": ["javascript", "equality", "operators"],
+    "user": {
+      "name": "logicLuke",
+      "reputation": 3220,
+      "avatar": "https://example.com/avatars/logicluke.png"
+    },
+    "timestamp": "2025-06-17T14:20:00Z"
+  }
+]
