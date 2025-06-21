@@ -4,10 +4,17 @@
   <div>
     <MainHeader />
     <CenterContainer class="flex">
-      <aside
-        class="hidden border-r md:shrink-0 border-neutral-600 p-4 md:block w-50"
-      >
-        asd
+      <aside class="hidden md:shrink-0 p-4 md:block w-50">
+        <nav>
+          <ul>
+            <li>
+              <NuxtLink to="/">Questions</NuxtLink>
+            </li>
+            <li>
+              <NuxtLink to="/questions/tags">tags</NuxtLink>
+            </li>
+          </ul>
+        </nav>
       </aside>
       <main>
         <slot />

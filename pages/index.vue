@@ -7,20 +7,27 @@ if (error.value) {
 </script>
 
 <template>
-  <div class="max-w-3xl">
+  <div class="max-w-3xl md:border-l border-neutral-600">
     <header class="p-4 md:px-8">
-      <div>
+      <div class="flex justify-between items-center">
         <h1 class="text-2xl">Newest Questions</h1>
-        <NuxtLink to="questions/ask">Ask Question</NuxtLink>
+        <NuxtLink
+          class="text-sm text-neutral-300 rounded-lg px-3 py-2 bg-sky-700 hover:bg-sky-600"
+          to="questions/ask"
+        >
+          Ask Question
+        </NuxtLink>
       </div>
-      <p>{{ data?.length }} questions</p>
+      <div class="mt-8">
+        <p>{{ data?.length }} questions</p>
+      </div>
     </header>
 
-    <div class="mt-8">
+    <div>
       <article
         v-for="q in data"
         :key="q.id"
-        class="md:flex gap-4 p-4 md:pl-12 border-t border-b-0 last-of-type:border-b border-neutral-600"
+        class="md:flex gap-4 p-4 md:pl-12 border-t border-b-0 border-neutral-600"
       >
         <div class="shrink-0 mb-2 md:mb-0 md:mt-1">
           <ul class="flex gap-2 md:block md:text-right text-sm">
@@ -55,7 +62,7 @@ if (error.value) {
                 :key="tag"
                 class="text-xs bg-neutral-700 text-neutral-200 rounded-lg px-2 py-1 hover:bg-neutral-600"
               >
-                <NuxtLink :to="`/questions/tag/${tag}`">
+                <NuxtLink :to="`/questions/tags/${tag}`">
                   {{ tag }}
                 </NuxtLink>
               </li>

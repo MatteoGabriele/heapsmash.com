@@ -1,5 +1,11 @@
 import questions from "~/assets/static/questions.json";
 
+export type User = {
+  name: string;
+  reputation: number;
+  avatar: string;
+};
+
 export type Question = {
   id: string;
   slug: string;
@@ -9,11 +15,7 @@ export type Question = {
   answers: number;
   views: number;
   tags: string[];
-  user: {
-    name: string;
-    reputation: number;
-    avatar: string;
-  };
+  user: User;
   timestamp: string;
 };
 
