@@ -1,22 +1,13 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div>
+  <div class="min-h-svh flex flex-col">
     <MainHeader />
-    <CenterContainer class="flex">
-      <aside class="hidden md:shrink-0 p-4 md:block w-50">
-        <nav>
-          <ul>
-            <li>
-              <NuxtLink to="/">Questions</NuxtLink>
-            </li>
-            <li>
-              <NuxtLink to="/questions/tags">tags</NuxtLink>
-            </li>
-          </ul>
-        </nav>
-      </aside>
-      <main>
+    <CenterContainer class="flex flex-1">
+      <div>
+        <PageNavigation class="sticky top-16" />
+      </div>
+      <main class="max-w-3xl md:border-l border-neutral-700 h-full">
         <slot />
       </main>
     </CenterContainer>

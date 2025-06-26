@@ -1,7 +1,7 @@
-<script setup lang="ts"></script>
-
 <template>
-  <div class="border-b border-neutral-600">
+  <div
+    class="sticky top-0 bg-neutral-900 border-b border-neutral-700 border-t-sky-500 border-t-4"
+  >
     <CenterContainer as="header" class="px-4 py-3 gap-4 flex items-center">
       <Logo class="w-46 shrink-0" />
 

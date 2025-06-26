@@ -3,10 +3,10 @@ const query = ref<string>("");
 </script>
 
 <template>
-  <search
-    class="border border-neutral-600 w-full rounded-lg px-2 focus-within:border-neutral-500"
+  <div
+    class="border border-neutral-700 w-full rounded-lg px-2 focus-within:border-neutral-500"
   >
-    <form class="w-full">
+    <form role="search" class="w-full">
       <label class="flex items-center">
         <Icon name="ph:magnifying-glass" />
         <input
@@ -17,5 +17,5 @@ const query = ref<string>("");
         />
       </label>
     </form>
-  </search>
+  </div>
 </template>

@@ -9,6 +9,7 @@
     "ignoreUnknown": false,
     "includes": [
       "./composables/**/*.ts",
+      "./plugins/**/*.ts",
       "./tsconfig.json",
       "./server/**/*.{ts|vue}",
       "./components/**/*.{ts|vue}",

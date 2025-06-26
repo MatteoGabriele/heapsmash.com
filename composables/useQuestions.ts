@@ -1,23 +1,25 @@
 import questions from "~/assets/static/questions.json";
 
-export type User = {
-  name: string;
-  reputation: number;
-  avatar: string;
-};
-
-export type Question = {
+export interface Question {
   id: string;
   slug: string;
   title: string;
   excerpt: string;
   votes: number;
   answers: number;
+  answered: boolean;
+  answerCorrect?: boolean;
   views: number;
   tags: string[];
   user: User;
   timestamp: string;
-};
+}
+
+export interface User {
+  name: string;
+  reputation: number;
+  avatar: string;
+}
 
 export async function useQuestions() {
   return useAsyncData<Question[]>(async () => questions);

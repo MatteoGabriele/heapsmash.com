@@ -5,7 +5,7 @@ const { as = "div" } = defineProps<{
 </script>
 
 <template>
-  <Component :is="as" class="w-full max-w-7xl mx-auto">
+  <Component :is="as" class="w-full h-full max-w-7xl mx-auto">
     <slot />
   </Component>
 </template>

@@ -15,6 +15,8 @@ export default defineNuxtConfig({
   icon: {
     mode: "svg",
   },
+  
+  // plugins: ['~/plugins/kashyyyk'],
 
   fonts: {
     families: [
