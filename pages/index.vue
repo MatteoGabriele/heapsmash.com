@@ -1,12 +1,9 @@
 <script setup lang="ts">
-const { data, error } = await useQuestions();
-
-if (error.value) {
-  throw createError(error.value);
-}
+const store = useStore();
+const { data: questions } = await store.questions.queryMany();
 </script>
 
 <template>
-  <QuestionsHeader />
-  <QuestionCard v-for="q in data" :key="q.id" v-bind="q" />
+  <QuestionsHeader title="Newest Questions" :count="questions.length" />
+  <QuestionCard v-for="q in questions" :key="q.id" v-bind="q" />
 </template>

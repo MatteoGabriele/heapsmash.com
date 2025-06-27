@@ -4,7 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
   devtools: { enabled: true },
-  modules: ['@nuxt/fonts', '@nuxt/icon', '@nuxt/test-utils'],
+  modules: ['@nuxt/fonts', '@nuxt/icon', '@nuxt/test-utils', '@rstore/nuxt'],
   
   vite: {
     plugins: [tailwindcss()],
@@ -15,8 +15,6 @@ export default defineNuxtConfig({
   icon: {
     mode: "svg",
   },
-  
-  // plugins: ['~/plugins/kashyyyk'],
 
   fonts: {
     families: [

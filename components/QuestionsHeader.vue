@@ -1,15 +1,14 @@
 <script setup lang="ts">
-const { data, error } = await useQuestions();
-
-if (error.value) {
-  throw createError(error.value);
-}
+defineProps<{
+  title: string;
+  count: number;
+}>();
 </script>
 
 <template>
-  <header class="p-4 md:pl-8">
+  <header class="p-4 md:pl-8 md:pr-0">
     <div class="flex justify-between items-center">
-      <h1 class="text-2xl">Newest Questions</h1>
+      <h1 class="text-2xl">{{ title }}</h1>
       <NuxtLink
         class="text-sm text-neutral-300 rounded-lg px-3 py-2 bg-sky-700 hover:bg-sky-600"
         to="questions/ask"
@@ -18,7 +17,7 @@ if (error.value) {
       </NuxtLink>
     </div>
     <div class="mt-8 flex justify-between">
-      <p>{{ data?.length }} questions</p>
+      <p>{{ count }} questions</p>
       <QuestionTabFilters />
     </div>
   </header>

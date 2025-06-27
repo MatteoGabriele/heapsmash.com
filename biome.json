@@ -10,6 +10,7 @@
     "includes": [
       "./composables/**/*.ts",
       "./plugins/**/*.ts",
+      "./rstore/**/*.ts",
       "./tsconfig.json",
       "./server/**/*.{ts|vue}",
       "./components/**/*.{ts|vue}",

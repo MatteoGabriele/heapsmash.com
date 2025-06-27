@@ -16,6 +16,7 @@
     "@nuxt/fonts": "^0.11.4",
     "@nuxt/icon": "^1.14.0",
     "@nuxt/test-utils": "^3.19.1",
+    "@rstore/nuxt": "^0.6.17",
     "clsx-for-tailwind": "^1.0.0",
     "kashyyyk": "^0.9.2",
     "nuxt": "^3.17.5",

@@ -75,9 +75,9 @@
     "slug": "difference-between-equals-and-triple-equals",
     "title": "What’s the difference between == and ===?",
     "excerpt": "JavaScript has both == and === for comparisons, and I’ve seen both used in different places. I get that === is more strict, but what’s actually going on under the hood? Are there performance differences, or just safety ones? Would love a concise explanation and when each is appropriate.",
-    "votes": 50,
-    "answers": 6,
-    "views": 2105,
+    "votes": 0,
+    "answers": 0,
+    "views": 0,
     "tags": ["javascript", "equality", "operators"],
     "user": {
       "name": "logicLuke",
