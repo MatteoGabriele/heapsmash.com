@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <aside class="hidden md:shrink-0 py-4 md:block w-50">
+  <aside class="hidden md:shrink-0 py-6 md:block w-50">
     <nav aria-role="Pages">
       <ul>
         <li>

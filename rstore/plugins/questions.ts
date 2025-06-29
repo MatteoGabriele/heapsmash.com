@@ -6,5 +6,19 @@ export default defineRstorePlugin({
     hook("fetchMany", async (payload) => {
       payload.setResult(questions);
     });
+
+    hook("fetchFirst", async (payload) => {
+      if (!payload.key) {
+        return;
+      }
+
+      const item = questions.find((question) => question.id === payload.key);
+
+      if (!item) {
+        return;
+      }
+
+      payload.setResult(item);
+    });
   },
 });
