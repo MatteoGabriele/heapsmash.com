@@ -12,7 +12,9 @@ export default defineRstorePlugin({
         return;
       }
 
-      const item = questions.find((question) => question.id === payload.key);
+      const item = questions.find(
+        (question) => String(question.id) === String(payload.key),
+      );
 
       if (!item) {
         return;

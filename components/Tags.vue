@@ -6,12 +6,11 @@ defineProps<{
 
 <template>
   <ul class="flex gap-2">
-    <li
-      v-for="tag in tags"
-      :key="tag"
-      class="text-xs bg-neutral-700 text-neutral-200 rounded-lg px-2 py-1 hover:bg-neutral-600"
-    >
-      <NuxtLink :to="`/questions/tags/${tag}`">
+    <li v-for="tag in tags" :key="tag">
+      <NuxtLink
+        class="text-xs bg-neutral-700 text-neutral-200 rounded-lg px-2 py-1 hover:bg-neutral-600"
+        :to="`/questions/tags/${tag}`"
+      >
         {{ tag }}
       </NuxtLink>
     </li>
