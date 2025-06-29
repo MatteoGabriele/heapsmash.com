@@ -14,6 +14,7 @@
       "./tsconfig.json",
       "./server/**/*.{ts|vue}",
       "./components/**/*.{ts|vue}",
+      "./nuxt.config.ts",
       "./pages/**/*.{ts|vue}"
     ]
   },

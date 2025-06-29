@@ -1,23 +1,53 @@
-export type Question = {
-  id: string;
+export interface Question {
+  id: number;
   slug: string;
   title: string;
-  excerpt: string;
-  votes: number;
-  answers: number;
-  answered: boolean;
-  answerCorrect?: boolean;
-  views: number;
+  body: string;
+  user: AnswerUser;
   tags: string[];
-  user: User;
-  timestamp: string;
-};
+  votes: Votes;
+  created_at: Date;
+  last_activity_at: Date;
+  views: number;
+  is_answered: boolean;
+  accepted_answer_id: number;
+  comments: Comment[];
+  answers: Answer[];
+}
 
-export type User = {
-  name: string;
+export interface Answer {
+  answer_id: number;
+  body: string;
+  user: AnswerUser;
+  created_at: Date;
+  is_accepted: boolean;
+  votes: Votes;
+  comments: Comment[];
+}
+
+export interface Comment {
+  comment_id: number;
+  body: string;
+  user: CommentUser;
+  created_at: Date;
+}
+
+export interface CommentUser {
+  user_id: number;
+  username: string;
+}
+
+export interface AnswerUser {
+  user_id: number;
+  username: string;
   reputation: number;
-  avatar: string;
-};
+  profile_image?: string;
+}
+
+export interface Votes {
+  upvotes: number;
+  downvotes: number;
+}
 
 export default defineItemType<Question>().model({
   name: "questions",

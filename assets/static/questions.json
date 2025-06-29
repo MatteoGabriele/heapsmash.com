@@ -1,107 +1,81 @@
 [
   {
-    "id": "1",
-    "slug": "undefined-vs-null-javascript",
-    "title": "Why is 'undefined' not equal to 'null' in JavaScript?",
-    "excerpt": "I always assumed undefined and null were basically interchangeable in JavaScript, but I’ve noticed some unexpected behavior when comparing the two. Can someone clearly explain the core difference between them, how they’re treated by the engine, and any common pitfalls or best practices for working with both in modern JS?",
-    "votes": 42,
-    "answers": 3,
-    "answered": true,
-    "answerCorrect": true,
-    "views": 1024,
-    "tags": ["javascript", "types", "null", "undefined"],
+    "id": 12345678,
+    "title": "How do I debounce an input in React?",
+    "slug": "how-do-i-debounce-an-input-in-react",
+    "body": "I'm trying to debounce a search input so it doesn't fire the API call on every keystroke. I'm using React with hooks. What's the best way to do this?",
     "user": {
-      "name": "devDan",
-      "reputation": 1340,
-      "avatar": "https://example.com/avatars/devdan.png"
+      "user_id": 987654,
+      "username": "devAlex",
+      "reputation": 1520,
+      "profile_image": "https://example.com/avatar.png"
     },
-    "timestamp": "2025-06-20T08:15:00Z"
-  },
-  {
-    "id": "2",
-    "slug": "debounce-function-in-react",
-    "title": "How do I debounce a function in React?",
-    "excerpt": "I'm working on a React component where the user types into a search field, and I want to avoid firing the API request on every keystroke. What’s the cleanest way to debounce the function, ideally using hooks? I've tried lodash but want a native or useEffect-based solution if possible.",
-    "votes": 29,
-    "answers": 4,
-    "answered": false,
-    "views": 876,
-    "tags": ["react", "debounce", "hooks"],
-    "user": {
-      "name": "codeCleo",
-      "reputation": 2102,
-      "avatar": "https://example.com/avatars/codecleo.png"
+    "tags": ["reactjs", "javascript", "hooks", "performance", "debounce"],
+    "votes": {
+      "upvotes": 45,
+      "downvotes": 2
     },
-    "timestamp": "2025-06-19T18:44:00Z"
-  },
-  {
-    "id": "3",
-    "answered": true,
-    "slug": "heap-out-of-memory-nodejs",
-    "title": "What does 'heap out of memory' mean in Node.js?",
-    "excerpt": "When I run a script that processes a large file or a long-running operation in Node.js, I keep running into a fatal error that says 'JavaScript heap out of memory'. What does this mean exactly, and how can I prevent it? Are there flags I should pass to Node or memory leaks to check for?",
-    "votes": 18,
-    "answers": 2,
-    "views": 623,
-    "tags": ["node.js", "memory", "heap"],
-    "user": {
-      "name": "stackSmash",
-      "reputation": 768,
-      "avatar": "https://example.com/avatars/stacksmash.png"
-    },
-    "timestamp": "2025-06-18T10:11:00Z"
-  },
-  {
-    "id": "4",
-    "answered": false,
-    "answerCorrect": false,
-    "slug": "useeffect-infinite-loop-react",
-    "title": "Why is useEffect causing an infinite loop?",
-    "excerpt": "My useEffect keeps running repeatedly even though I thought I set the dependency array correctly. I’m using a state update inside the effect and suspect that’s causing it. Can anyone help me understand how to break the loop and structure useEffect properly to only run once or when truly necessary?",
-    "votes": 35,
-    "answers": 5,
-    "views": 1143,
-    "tags": ["react", "useeffect", "infinite-loop"],
-    "user": {
-      "name": "hooksHannah",
-      "reputation": 952,
-      "avatar": "https://example.com/avatars/hookshannah.png"
-    },
-    "timestamp": "2025-06-20T02:39:00Z"
-  },
-  {
-    "id": "5",
-    "answered": false,
-    "slug": "difference-between-equals-and-triple-equals",
-    "title": "What’s the difference between == and ===?",
-    "excerpt": "JavaScript has both == and === for comparisons, and I’ve seen both used in different places. I get that === is more strict, but what’s actually going on under the hood? Are there performance differences, or just safety ones? Would love a concise explanation and when each is appropriate.",
-    "votes": 0,
-    "answers": 0,
-    "views": 0,
-    "tags": ["javascript", "equality", "operators"],
-    "user": {
-      "name": "logicLuke",
-      "reputation": 3220,
-      "avatar": "https://example.com/avatars/logicluke.png"
-    },
-    "timestamp": "2025-06-17T14:20:00Z"
-  },
-  {
-    "id": "6",
-    "answered": false,
-    "slug": "difference-between-equals-and-triple-equals",
-    "title": "What’s the difference between ! and !!",
-    "excerpt": "JavaScript has both == and === for comparisons, and I’ve seen both used in different places. I get that === is more strict, but what’s actually going on under the hood? Are there performance differences, or just safety ones? Would love a concise explanation and when each is appropriate.",
-    "votes": 150,
-    "answers": 1,
-    "answerCorrect": true,
-    "views": 21,
-    "tags": ["javascript", "equality", "operators"],
-    "user": {
-      "name": "logicLuke",
-      "reputation": 3220,
-      "avatar": "https://example.com/avatars/logicluke.png"
-    },
-    "timestamp": "2025-06-17T14:20:00Z"
+    "created_at": "2025-06-15T13:24:00Z",
+    "last_activity_at": "2025-06-16T08:45:00Z",
+    "views": 3240,
+    "is_answered": true,
+    "accepted_answer_id": 87654321,
+    "comments": [
+      {
+        "comment_id": 333,
+        "body": "Are you using a specific version of React?",
+        "user": {
+          "user_id": 555777,
+          "username": "frontendNerd"
+        },
+        "created_at": "2025-06-15T13:30:00Z"
+      },
+      {
+        "comment_id": 334,
+        "body": "Do you want to debounce only the API call or also the UI updates?",
+        "user": {
+          "user_id": 666888,
+          "username": "reactRanger"
+        },
+        "created_at": "2025-06-15T13:35:00Z"
+      }
+    ],
+    "answers": [
+      {
+        "answer_id": 87654321,
+        "body": "Use `useEffect` with a `setTimeout`. Or install lodash and use `_.debounce`. Here's a simple hook:\n\n```js\nimport { useEffect, useState } from 'react';\n\nfunction useDebounce(value, delay) {\n  const [debouncedValue, setDebouncedValue] = useState(value);\n\n  useEffect(() => {\n    const handler = setTimeout(() => setDebouncedValue(value), delay);\n    return () => clearTimeout(handler);\n  }, [value, delay]);\n\n  return debouncedValue;\n}\n```\n\nThen use it in your component like this:\n\n```js\nconst debouncedSearch = useDebounce(searchTerm, 500);\n```",
+        "user": {
+          "user_id": 246810,
+          "username": "codeQueen",
+          "reputation": 8830
+        },
+        "created_at": "2025-06-15T14:00:00Z",
+        "is_accepted": true,
+        "votes": {
+          "upvotes": 63,
+          "downvotes": 0
+        },
+        "comments": [
+          {
+            "comment_id": 444,
+            "body": "Nice! This is clean and works perfectly.",
+            "user": {
+              "user_id": 321000,
+              "username": "jsxGuy"
+            },
+            "created_at": "2025-06-15T15:10:00Z"
+          },
+          {
+            "comment_id": 445,
+            "body": "Just a heads up—this will reset the timeout on every render, so make sure your component isn’t updating too often.",
+            "user": {
+              "user_id": 888999,
+              "username": "debugDana"
+            },
+            "created_at": "2025-06-15T15:15:00Z"
+          }
+        ]
+      }
+    ]
   }
 ]

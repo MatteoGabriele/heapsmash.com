@@ -5,5 +5,9 @@ const { data: questions } = await store.questions.queryMany();
 
 <template>
   <QuestionsHeader title="Newest Questions" :count="questions.length" />
-  <QuestionCard v-for="q in questions" :key="q.id" v-bind="q" />
+  <QuestionCard
+    v-for="question in questions"
+    :key="question.id"
+    :question-id="question.id"
+  />
 </template>

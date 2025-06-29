@@ -3,11 +3,12 @@ import { cn } from "clsx-for-tailwind";
 
 const props = defineProps<{
   votes: number;
-  answers: number;
   views: number;
-  answered?: boolean;
-  answerCorrect?: boolean;
+  answers: number;
+  hasAcceptedAnswer?: boolean;
 }>();
+
+const isAnswered = computed<boolean>(() => props.answers > 0);
 </script>
 
 <template>
@@ -19,14 +20,14 @@ const props = defineProps<{
       <li
         :class="
           cn({
-            'border px-1.5 py-0.5 rounded-lg': answered || answerCorrect,
-            ' border-emerald-800 text-emerald-500': answered,
-            'bg-emerald-400 text-neutral-900': answerCorrect,
+            'border px-1.5 py-0.5 rounded-lg': isAnswered || hasAcceptedAnswer,
+            ' border-emerald-800 text-emerald-500': isAnswered,
+            'bg-emerald-400 text-neutral-900': hasAcceptedAnswer,
           })
         "
       >
         <div class="flex gap-1 items-center">
-          <Icon v-if="answerCorrect" name="ph:check-bold" />
+          <Icon v-if="hasAcceptedAnswer" name="ph:check-bold" />
           <span class="font-bold">{{ answers }}</span> answers
         </div>
       </li>

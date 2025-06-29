@@ -9,7 +9,7 @@ const { error, data: questions } = await store.questions.queryMany(() => ({
     const tab = route.query.tab as TabName;
 
     if (tab === "unanswered") {
-      return !question.answered && !question.answerCorrect;
+      return !question.answers.length;
     } else if (tab === "active") {
       return question.views > 0;
     }
@@ -17,7 +17,7 @@ const { error, data: questions } = await store.questions.queryMany(() => ({
     return question;
   },
   sort: (question) => {
-    return new Date(question.timestamp).getTime();
+    return new Date(question.created_at).getTime();
   },
 }));
 
@@ -39,5 +39,9 @@ const title = computed<string>(() => {
 
 <template>
   <QuestionsHeader :title :count="questions.length" />
-  <QuestionCard v-for="q in questions" :key="q.id" v-bind="q" />
+  <QuestionCard
+    v-for="question in questions"
+    :key="question.id"
+    :question-id="question.id"
+  />
 </template>

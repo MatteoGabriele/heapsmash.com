@@ -11,13 +11,18 @@ if (error.value) {
   throw createError(error.value);
 }
 
-function handleVoting(newVote: number): void {
-  if (newVote === data.value?.votes) {
-    console.log("reset");
-    return;
+const votes = computed<number>(() => {
+  if (!data.value) {
+    return 0
   }
+  
+  const { upvotes, downvotes} = data.value.votes
+  
+  return upvotes - downvotes
+})
 
-  console.log("voted", newVote);
+function handleVoting(newVote: number): void {
+   
 }
 </script>
 
@@ -36,14 +41,13 @@ function handleVoting(newVote: number): void {
     </header>
 
     <div class="py-6 flex gap-4">
-      <QuestionVote @voted="handleVoting" :votes="data.votes" />
+      <QuestionVote @voted="handleVoting" :votes="votes" />
       <div>
         <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta quas
-          eaque error blanditiis at? Laboriosam quod similique repellat
-          aspernatur atque? Accusamus sequi laboriosam consectetur, sapiente
-          quasi quis nam ipsam alias!
+          {{ data.body }}
         </p>
+
+        <Tags class="mt-4" :tags="data.tags" />
       </div>
     </div>
   </div>

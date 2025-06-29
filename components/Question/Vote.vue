@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const props = defineProps<{ votes: number }>();
+const props = defineProps<{
+  votes: number;
+}>();
 const emits = defineEmits<{
   voted: [votes: number];
 }>();

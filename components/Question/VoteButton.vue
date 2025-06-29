@@ -8,7 +8,7 @@ const props = defineProps<{
 
 const classes = computed<string>(() => {
   return cn(
-    "transition-colors duration-300 border border-neutral-700 text-white hover:bg-yellow-800 text-2xl size-10 rounded-full flex items-center justify-center",
+    "transition-colors duration-300 border border-neutral-700 text-white hover:bg-yellow-800 text-2xl size-11 rounded-full flex items-center justify-center",
     {
       "bg-yellow-950 text-amber-500 border-amber-500": props.active,
     }

@@ -7,7 +7,7 @@
       <div>
         <PageNavigation class="sticky top-16" />
       </div>
-      <main class="max-w-3xl md:border-l pt-4 border-neutral-700">
+      <main class="max-w-3xl md:border-l pt-4 border-neutral-700 w-full">
         <slot />
       </main>
     </CenterContainer>
