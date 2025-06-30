@@ -15,7 +15,7 @@ const { data } = await store.questions.queryFirst({
     class="md:flex gap-4 p-4 md:pl-12 border-t border-b-0 border-neutral-700"
   >
     <div class="md:w-28 shrink-0 mb-2 md:mb-0 md:mt-1">
-      <QuestionStats
+      <PostStats
         :has-accepted-answer="data.is_answered"
         :answers="data.answers.length"
         :views="data.views"

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useI18n } from "kashyyyk";
+
 const { params } = useRoute();
 const id = computed<string | undefined>(() => params.slug[0]);
 
@@ -20,6 +22,12 @@ const votes = computed<number>(() => {
 
   return upvotes - downvotes;
 });
+
+const { t } = useI18n({
+  en: {
+    answers: "0 Answers | 1 Answer | {count} Answers",
+  },
+});
 </script>
 
 <template>
@@ -36,33 +44,13 @@ const votes = computed<number>(() => {
       </ul>
     </header>
 
-    <div class="py-6 flex gap-4">
-      <QuestionVote :votes="votes" />
-      <div>
-        <p>{{ data.body }}</p>
-        <Tags class="mt-4" :tags="data.tags" />
-        <QuestionComments
-          v-if="data.comments.length"
-          class="mt-12"
-          :comments="data.comments"
-        />
-      </div>
-    </div>
+    <Post :post="data" />
 
-    <div
-      v-for="answer in data.answers"
-      :key="answer.id"
-      class="py-6 flex gap-4"
-    >
-      <QuestionVote :votes="answer.votes.upvotes - answer.votes.downvotes" />
-      <div>
-        <p>{{ answer.body }}</p>
-        <QuestionComments
-          v-if="answer.comments.length"
-          class="mt-12"
-          :comments="answer.comments"
-        />
-      </div>
-    </div>
+    <section aria-labelledby="answers_title" class="mt-12">
+      <h2 id="answers_title" class="text-xl">
+        {{ t("answers", { count: data.answers.length }) }}
+      </h2>
+      <Post v-for="answer in data.answers" :key="answer.id" :post="answer" />
+    </section>
   </div>
 </template>

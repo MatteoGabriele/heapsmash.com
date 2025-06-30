@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { TabName } from "../../components/Question/TabFilters.vue";
+import type { TabName } from "~/components/Post/TabFilters.vue";
 
 const store = useStore();
 const route = useRoute();
@@ -38,8 +38,8 @@ const title = computed<string>(() => {
 </script>
 
 <template>
-  <QuestionsHeader :title :count="questions.length" />
-  <QuestionCard
+  <PostsHeader :title :count="questions.length" />
+  <PostCard
     v-for="question in questions"
     :key="question.id"
     :question-id="question.id"

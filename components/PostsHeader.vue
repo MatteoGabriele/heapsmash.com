@@ -18,7 +18,7 @@ defineProps<{
     </div>
     <div class="mt-8 flex justify-between">
       <p>{{ count }} questions</p>
-      <QuestionTabFilters />
+      <PostTabFilters />
     </div>
   </header>
 </template>
