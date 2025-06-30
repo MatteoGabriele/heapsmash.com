@@ -16,7 +16,7 @@ export interface Question {
 }
 
 export interface Answer {
-  answer_id: number;
+  id: number;
   body: string;
   user: AnswerUser;
   created_at: Date;
@@ -26,19 +26,20 @@ export interface Answer {
 }
 
 export interface Comment {
-  comment_id: number;
+  id: number;
   body: string;
   user: CommentUser;
+  votes: number;
   created_at: Date;
 }
 
 export interface CommentUser {
-  user_id: number;
+  id: number;
   username: string;
 }
 
 export interface AnswerUser {
-  user_id: number;
+  id: number;
   username: string;
   reputation: number;
   profile_image?: string;

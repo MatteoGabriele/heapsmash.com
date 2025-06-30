@@ -3,9 +3,9 @@
     "id": 12345678,
     "title": "How do I debounce an input in React?",
     "slug": "how-do-i-debounce-an-input-in-react",
-    "body": "I'm trying to debounce a search input so it doesn't fire the API call on every keystroke. I'm using React with hooks. What's the best way to do this?",
+    "body": "I'm trying to debounce a search input in a React component to avoid firing the API on every single keystroke. Right now, every time the user types, it calls the fetch function immediately. I'd like to delay the request until the user stops typing for a short period, like 500ms. I'm using hooks (functional components), and ideally I want a clean, reusable solution. I’ve heard about lodash but would prefer a native or minimal approach if possible. Any advice or code samples would be appreciated!",
     "user": {
-      "user_id": 987654,
+      "id": 987654,
       "username": "devAlex",
       "reputation": 1520,
       "profile_image": "https://example.com/avatar.png"
@@ -22,19 +22,21 @@
     "accepted_answer_id": 87654321,
     "comments": [
       {
-        "comment_id": 333,
+        "id": 333,
         "body": "Are you using a specific version of React?",
+        "votes": 10,
         "user": {
-          "user_id": 555777,
+          "id": 555777,
           "username": "frontendNerd"
         },
         "created_at": "2025-06-15T13:30:00Z"
       },
       {
-        "comment_id": 334,
+        "id": 334,
+        "votes": 0,
         "body": "Do you want to debounce only the API call or also the UI updates?",
         "user": {
-          "user_id": 666888,
+          "id": 666888,
           "username": "reactRanger"
         },
         "created_at": "2025-06-15T13:35:00Z"
@@ -42,10 +44,10 @@
     ],
     "answers": [
       {
-        "answer_id": 87654321,
+        "id": 87654321,
         "body": "Use `useEffect` with a `setTimeout`. Or install lodash and use `_.debounce`. Here's a simple hook:\n\n```js\nimport { useEffect, useState } from 'react';\n\nfunction useDebounce(value, delay) {\n  const [debouncedValue, setDebouncedValue] = useState(value);\n\n  useEffect(() => {\n    const handler = setTimeout(() => setDebouncedValue(value), delay);\n    return () => clearTimeout(handler);\n  }, [value, delay]);\n\n  return debouncedValue;\n}\n```\n\nThen use it in your component like this:\n\n```js\nconst debouncedSearch = useDebounce(searchTerm, 500);\n```",
         "user": {
-          "user_id": 246810,
+          "id": 246810,
           "username": "codeQueen",
           "reputation": 8830
         },
@@ -57,19 +59,21 @@
         },
         "comments": [
           {
-            "comment_id": 444,
+            "id": 444,
             "body": "Nice! This is clean and works perfectly.",
+            "votes": 0,
             "user": {
-              "user_id": 321000,
+              "id": 321000,
               "username": "jsxGuy"
             },
             "created_at": "2025-06-15T15:10:00Z"
           },
           {
-            "comment_id": 445,
+            "id": 445,
+            "votes": 2,
             "body": "Just a heads up—this will reset the timeout on every render, so make sure your component isn’t updating too often.",
             "user": {
-              "user_id": 888999,
+              "id": 888999,
               "username": "debugDana"
             },
             "created_at": "2025-06-15T15:15:00Z"

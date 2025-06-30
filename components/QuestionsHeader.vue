@@ -6,7 +6,7 @@ defineProps<{
 </script>
 
 <template>
-  <header class="p-4 md:pl-8 md:pr-0">
+  <header class="p-4 md:pl-8">
     <div class="flex justify-between items-center">
       <h1 class="text-2xl">{{ title }}</h1>
       <NuxtLink

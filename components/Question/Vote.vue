@@ -21,14 +21,8 @@ watch(localVotes, (value) => {
 
 <template>
   <div class="inline-flex flex-col items-center gap-2">
-    <QuestionVoteButton @click="upVote" :active="hasUpVoted" direction="up" />
-
+    <VoteButton @click="upVote" :active="hasUpVoted" direction="up" />
     <p class="font-bold">{{ localVotes || "Vote" }}</p>
-
-    <QuestionVoteButton
-      @click="downVote"
-      :active="hasDownVoted"
-      direction="down"
-    />
+    <VoteButton @click="downVote" :active="hasDownVoted" direction="down" />
   </div>
 </template>

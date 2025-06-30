@@ -13,21 +13,17 @@ if (error.value) {
 
 const votes = computed<number>(() => {
   if (!data.value) {
-    return 0
+    return 0;
   }
-  
-  const { upvotes, downvotes} = data.value.votes
-  
-  return upvotes - downvotes
-})
 
-function handleVoting(newVote: number): void {
-   
-}
+  const { upvotes, downvotes } = data.value.votes;
+
+  return upvotes - downvotes;
+});
 </script>
 
 <template>
-  <div v-if="data" class="p-4">
+  <div v-if="data" class="p-4 md:px-6">
     <header class="border-b pb-4 border-b-neutral-700">
       <h2 class="text-2xl">{{ data.title }}</h2>
       <ul class="flex gap-2 mt-2 text-sm text-neutral-300">
@@ -41,13 +37,31 @@ function handleVoting(newVote: number): void {
     </header>
 
     <div class="py-6 flex gap-4">
-      <QuestionVote @voted="handleVoting" :votes="votes" />
+      <QuestionVote :votes="votes" />
       <div>
-        <p>
-          {{ data.body }}
-        </p>
-
+        <p>{{ data.body }}</p>
         <Tags class="mt-4" :tags="data.tags" />
+        <QuestionComments
+          v-if="data.comments.length"
+          class="mt-12"
+          :comments="data.comments"
+        />
+      </div>
+    </div>
+
+    <div
+      v-for="answer in data.answers"
+      :key="answer.id"
+      class="py-6 flex gap-4"
+    >
+      <QuestionVote :votes="answer.votes.upvotes - answer.votes.downvotes" />
+      <div>
+        <p>{{ answer.body }}</p>
+        <QuestionComments
+          v-if="answer.comments.length"
+          class="mt-12"
+          :comments="answer.comments"
+        />
       </div>
     </div>
   </div>
