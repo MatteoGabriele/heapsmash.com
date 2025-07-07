@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { codeToHtml, codeToTokens, type BundledLanguage } from "shiki";
-
 const props = defineProps<{
   text: string;
 }>();
@@ -9,19 +7,6 @@ type Block = {
   type: "text" | "code";
   content: string;
 };
-
-async function getCode(value: string, lang?: BundledLanguage): Promise<string> {
-  console.log(
-    await codeToTokens(value, {
-      lang: lang || "text",
-      theme: "dark-plus",
-    })
-  );
-  return await codeToHtml(value, {
-    lang: lang || "text",
-    theme: "dark-plus",
-  });
-}
 
 const regex = /```(\w+)?\s*([\s\S]*?)```/g;
 
@@ -44,7 +29,7 @@ async function createBlocks(): Promise<Block[]> {
 
     parts.push({
       type: "code",
-      content: await getCode(code.trim(), lang as BundledLanguage),
+      content: code.trim(),
     });
 
     lastIndex = offset + fullMatch.length;
@@ -66,8 +51,10 @@ const blocks: Block[] = await createBlocks();
 <template>
   <div class="flex flex-col gap-4">
     <div v-for="(content, index) in blocks" :key="index">
-      <span v-if="content.type === 'text'">{{ content.content }}</span>
-      <span v-else v-html="content.content"></span>
+      <div v-if="content.type === 'text'">{{ content.content }}</div>
+      <code v-else class="text-neutral-500 block">
+        <pre class="whitespace-pre-wrap" v-html="content.content"></pre>
+      </code>
     </div>
   </div>
 </template>
