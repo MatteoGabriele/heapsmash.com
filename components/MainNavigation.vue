@@ -1,12 +1,21 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const user = useSupabaseUser();
+</script>
 
 <template>
   <nav aria-label="Main">
-    <ul class="flex items-center gap-2">
+    <ul v-if="user">
+      <li>
+        <NuxtLink>
+          <Avatar />
+        </NuxtLink>
+      </li>
+    </ul>
+    <ul v-else class="flex items-center gap-2">
       <li>
         <NuxtLink
           class="text-sm text-neutral-300 rounded-lg px-3 py-2 hover:bg-neutral-700"
-          to="/users/login"
+          to="/login"
         >
           Log in
         </NuxtLink>
@@ -14,7 +23,7 @@
       <li>
         <NuxtLink
           class="text-sm text-neutral-300 rounded-lg px-3 py-2 bg-sky-700 hover:bg-sky-600"
-          to="/users/signup"
+          to="/signup"
         >
           Sign up
         </NuxtLink>

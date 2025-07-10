@@ -1,5 +1,5 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div>login</div>
+  <div>Confirm page</div>
 </template>

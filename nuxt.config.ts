@@ -2,16 +2,32 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2025-05-15',
+  compatibilityDate: "2025-05-15",
+
   devtools: { enabled: true },
-  modules: ['@nuxt/fonts', '@nuxt/icon', '@nuxt/test-utils', '@rstore/nuxt'],
-  
+
+  modules: [
+    "@nuxt/fonts",
+    "@nuxt/icon",
+    "@nuxt/test-utils",
+    "@rstore/nuxt",
+    "@nuxtjs/supabase",
+  ],
+
+  supabase: {
+    redirectOptions: {
+      exclude: ["/questions/**", "/tags/**", "/", "/signup"],
+      login: "/login",
+      callback: "/confirm",
+    },
+  },
+
   vite: {
     plugins: [tailwindcss()],
   },
 
   css: ["~/assets/css/main.css"],
-  
+
   icon: {
     mode: "svg",
   },
@@ -25,4 +41,4 @@ export default defineNuxtConfig({
       },
     ],
   },
-})
+});
