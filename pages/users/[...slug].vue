@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const route = useRoute();
 const userId = computed<string | undefined>(() => route.params.slug[0]);
-const userName = computed<string | undefined>(() => route.params.slug[1]);
+// const userName = computed<string | undefined>(() => route.params.slug[1]);
 
 if (!userId.value) {
   throw createError({
@@ -9,9 +9,7 @@ if (!userId.value) {
   });
 }
 
-const { data, error } = await useAsyncData(() => {
-  return $fetch(`/api/user/${userId.value}`);
-});
+const { data, error } = await useUserProfile();
 
 if (error.value) {
   throw createError(error.value);

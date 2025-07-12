@@ -1,14 +1,12 @@
 <script setup lang="ts">
-const user = useSupabaseUser();
+const user = useUser();
 </script>
 
 <template>
   <nav aria-label="Main">
     <ul v-if="user">
       <li>
-        <NuxtLink :to="`/users/${user.id}/${user.user_metadata.user_name}`">
-          <Avatar />
-        </NuxtLink>
+        <UserProfileButton />
       </li>
     </ul>
     <ul v-else class="flex items-center gap-2">
