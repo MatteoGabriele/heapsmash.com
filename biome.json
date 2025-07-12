@@ -12,7 +12,7 @@
       "./plugins/**/*.ts",
       "./rstore/**/*.ts",
       "./tsconfig.json",
-      "./server/**/*.{ts|vue}",
+      "./server/**/*.ts",
       "./components/**/*.{ts|vue}",
       "./nuxt.config.ts",
       "./pages/**/*.{ts|vue}"

@@ -6,7 +6,7 @@ const user = useSupabaseUser();
   <nav aria-label="Main">
     <ul v-if="user">
       <li>
-        <NuxtLink>
+        <NuxtLink :to="`/users/${user.id}/${user.user_metadata.user_name}`">
           <Avatar />
         </NuxtLink>
       </li>
