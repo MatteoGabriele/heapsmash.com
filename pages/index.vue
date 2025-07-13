@@ -1,13 +1,12 @@
 <script setup lang="ts">
-const store = useStore();
-const { data: questions } = await store.questions.queryMany();
+const { data, error } = await useQuestionsFeed();
+
+if (error.value) {
+  throw createError(error.value);
+}
 </script>
 
 <template>
-  <PostsHeader title="Newest Questions" :count="questions.length" />
-  <PostCard
-    v-for="question in questions"
-    :key="question.id"
-    :question-id="question.id"
-  />
+  <PostsHeader title="Newest Questions" :count="data?.length ?? 0" />
+  <PostCard v-for="question in data" :key="question.id" :question="question" />
 </template>

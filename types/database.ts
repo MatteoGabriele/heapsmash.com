@@ -44,6 +44,13 @@ export type Database = {
             foreignKeyName: "answers_question_id_fkey"
             columns: ["question_id"]
             isOneToOne: false
+            referencedRelation: "question_feed"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "answers_question_id_fkey"
+            columns: ["question_id"]
+            isOneToOne: false
             referencedRelation: "questions"
             referencedColumns: ["id"]
           },
@@ -87,6 +94,13 @@ export type Database = {
             columns: ["answer_id"]
             isOneToOne: false
             referencedRelation: "answers"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "comments_question_id_fkey"
+            columns: ["question_id"]
+            isOneToOne: false
+            referencedRelation: "question_feed"
             referencedColumns: ["id"]
           },
           {
@@ -138,17 +152,24 @@ export type Database = {
       question_tags: {
         Row: {
           question_id: number
-          tag: string
+          tag_id: number
         }
         Insert: {
           question_id: number
-          tag: string
+          tag_id: number
         }
         Update: {
           question_id?: number
-          tag?: string
+          tag_id?: number
         }
         Relationships: [
+          {
+            foreignKeyName: "question_tags_question_id_fkey"
+            columns: ["question_id"]
+            isOneToOne: false
+            referencedRelation: "question_feed"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "question_tags_question_id_fkey"
             columns: ["question_id"]
@@ -156,44 +177,51 @@ export type Database = {
             referencedRelation: "questions"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "question_tags_tag_id_fkey"
+            columns: ["tag_id"]
+            isOneToOne: false
+            referencedRelation: "tags"
+            referencedColumns: ["id"]
+          },
         ]
       }
       questions: {
         Row: {
           accepted_answer_id: number | null
-          body: string | null
+          body: string
           created_at: string | null
           id: number
-          is_answered: boolean | null
+          is_answered: boolean
           last_activity_at: string | null
           slug: string
           title: string
           user_id: string | null
-          views: number | null
+          views: number
         }
         Insert: {
           accepted_answer_id?: number | null
-          body?: string | null
+          body: string
           created_at?: string | null
           id: number
-          is_answered?: boolean | null
+          is_answered?: boolean
           last_activity_at?: string | null
           slug: string
           title: string
           user_id?: string | null
-          views?: number | null
+          views?: number
         }
         Update: {
           accepted_answer_id?: number | null
-          body?: string | null
+          body?: string
           created_at?: string | null
           id?: number
-          is_answered?: boolean | null
+          is_answered?: boolean
           last_activity_at?: string | null
           slug?: string
           title?: string
           user_id?: string | null
-          views?: number | null
+          views?: number
         }
         Relationships: [
           {
@@ -204,6 +232,21 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      tags: {
+        Row: {
+          id: number
+          name: string
+        }
+        Insert: {
+          id?: number
+          name: string
+        }
+        Update: {
+          id?: number
+          name?: string
+        }
+        Relationships: []
       }
       votes: {
         Row: {
@@ -252,6 +295,13 @@ export type Database = {
             foreignKeyName: "votes_question_id_fkey"
             columns: ["question_id"]
             isOneToOne: false
+            referencedRelation: "question_feed"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "votes_question_id_fkey"
+            columns: ["question_id"]
+            isOneToOne: false
             referencedRelation: "questions"
             referencedColumns: ["id"]
           },
@@ -266,7 +316,24 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      question_feed: {
+        Row: {
+          accepted_answer_id: number | null
+          answers_count: number | null
+          body: string | null
+          created_at: string | null
+          id: number | null
+          is_answered: boolean | null
+          last_activity_at: string | null
+          slug: string | null
+          tags: Json | null
+          title: string | null
+          user: Json | null
+          views: number | null
+          votes: Json | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       [_ in never]: never
