@@ -1,25 +1,20 @@
 <script setup lang="ts">
-import type { TabName } from "~/components/Post/TabFilters.vue";
+import type { QuestionStatus } from "~/types/question";
 
-const store = useStore();
 const route = useRoute();
 
-const { error, data: questions } = await store.questions.queryMany(() => ({
-  filter: (question) => {
-    const tab = route.query.tab as TabName;
+const status = computed<QuestionStatus>(() => {
+  const tab = route.query.tab;
 
-    if (tab === "unanswered") {
-      return !question.answers.length;
-    } else if (tab === "active") {
-      return question.views > 0;
-    }
+  if (!tab) {
+    return "newest";
+  }
 
-    return question;
-  },
-  sort: (question) => {
-    return new Date(question.created_at).getTime();
-  },
-}));
+  const value = Array.isArray(tab) ? tab[0] : tab;
+  return value as QuestionStatus;
+});
+
+const { data: questions, error } = await useQuestionByStatus(status);
 
 if (error.value) {
   throw createError(error.value);
@@ -38,10 +33,10 @@ const title = computed<string>(() => {
 </script>
 
 <template>
-  <PostsHeader :title :count="questions.length" />
+  <PostsHeader :title :count="questions?.length ?? 0" />
   <PostCard
     v-for="question in questions"
     :key="question.id"
-    :question-id="question.id"
+    :question="question"
   />
 </template>

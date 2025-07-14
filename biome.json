@@ -9,6 +9,8 @@
     "ignoreUnknown": false,
     "includes": [
       "./composables/**/*.ts",
+      "./types/**/*.ts",
+      "!./types/database.ts",
       "./plugins/**/*.ts",
       "./rstore/**/*.ts",
       "./tsconfig.json",

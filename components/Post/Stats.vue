@@ -1,21 +1,22 @@
 <script setup lang="ts">
 import { cn } from "clsx-for-tailwind";
+import type { QuestionFeed } from "~/types/question";
 
-const props = defineProps<{
-  votes: number;
-  views: number;
-  answers: number;
-  hasAcceptedAnswer?: boolean;
-}>();
-
-const isAnswered = computed<boolean>(() => props.answers > 0);
+const question = inject<QuestionFeed>("question");
+const isAnswered = computed<boolean>(() => {
+  const count: number | undefined = question?.answers_count;
+  return count ? count > 0 : false;
+});
+const hasAcceptedAnswer = computed<boolean>(() => {
+  return question?.accepted_answer_id != null;
+});
 </script>
 
 <template>
   <div>
     <ul class="flex gap-2 items-center md:flex-col md:items-end text-sm">
       <li>
-        <span class="font-bold">{{ votes }}</span> votes
+        <span class="font-bold">{{ question?.votes.upvotes }}</span> votes
       </li>
       <li
         :class="
@@ -28,11 +29,11 @@ const isAnswered = computed<boolean>(() => props.answers > 0);
       >
         <div class="flex gap-1 items-center">
           <Icon v-if="hasAcceptedAnswer" name="ph:check-bold" />
-          <span class="font-bold">{{ answers }}</span> answers
+          <span class="font-bold">{{ question?.answers_count }}</span> answers
         </div>
       </li>
       <li>
-        <span class="font-bold">{{ views }}</span> views
+        <span class="font-bold">{{ question?.views }}</span> views
       </li>
     </ul>
   </div>

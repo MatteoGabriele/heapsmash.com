@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { cn } from "clsx-for-tailwind";
+import type { QuestionStatus } from "../../types/question";
 
-export type TabName = "newest" | "active" | "unanswered";
 export type Tab = {
   label: string;
-  name: TabName;
+  name: QuestionStatus;
   isActive?: boolean;
 };
 

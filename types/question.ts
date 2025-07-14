@@ -1,51 +1,53 @@
-export interface Question {
+export type QuestionStatus = "newest" | "active" | "unanswered";
+
+type BaseQuestion = {
   id: number;
-  slug: string;
   title: string;
+  slug: string;
   body: string;
-  user: AnswerUser;
+  created_at: string;
+  user: User;
   tags: string[];
-  votes: number;
-  created_at: Date;
-  last_activity_at: Date;
-  views: number;
+  votes: Votes;
+  answers_count: number;
+  accepted_answer_id: number | null;
   is_answered: boolean;
-  accepted_answer_id: number;
+  last_activity_at: string | null;
+  views: number;
+};
+
+export type Question = BaseQuestion & {
   comments: Comment[];
   answers: Answer[];
-}
+};
 
-export interface Answer {
+export type User = {
+  id: string;
+  username: string;
+  avatar_url: string | null;
+};
+
+export type Answer = {
   id: number;
   body: string;
-  user: AnswerUser;
-  created_at: Date;
+  user: User;
+  created_at: string;
   is_accepted: boolean;
   votes: Votes;
   comments: Comment[];
-}
+};
 
-export interface Comment {
+export type Comment = {
   id: number;
   body: string;
-  user: CommentUser;
+  user: User;
   votes: number;
-  created_at: Date;
-}
+  created_at: string;
+};
 
-export interface CommentUser {
-  id: number;
-  username: string;
-}
-
-export interface AnswerUser {
-  id: number;
-  username: string;
-  reputation: number;
-  profile_image?: string;
-}
-
-export interface Votes {
+export type Votes = {
   upvotes: number;
   downvotes: number;
-}
+};
+
+export type QuestionFeed = BaseQuestion;

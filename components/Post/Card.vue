@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import type { QuestionFeed } from "../../composables/useQuestions";
+import type { QuestionFeed } from "~/types/question";
 
-defineProps<{
+const props = defineProps<{
   question: QuestionFeed;
 }>();
+
+provide("question", props.question);
 </script>
 
 <template>
@@ -11,12 +13,7 @@ defineProps<{
     class="md:flex gap-4 p-4 md:pl-12 border-t border-b-0 border-neutral-700"
   >
     <div class="md:w-28 shrink-0 mb-2 md:mb-0 md:mt-1">
-      <PostStats
-        :has-accepted-answer="question.is_answered"
-        :answers="question.answers_count"
-        :views="question.views"
-        :votes="question.votes.upvotes"
-      />
+      <PostStats />
     </div>
     <div>
       <header>
@@ -34,8 +31,8 @@ defineProps<{
         {{ question.body }}
       </p>
 
-      <footer class="mt-2">
-        <Tags :tags="question.tags" />
+      <footer v-if="question.tags" class="mt-2">
+        <PostTags />
       </footer>
     </div>
   </article>
