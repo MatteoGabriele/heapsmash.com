@@ -16,7 +16,7 @@ export default defineNuxtConfig({
 
   supabase: {
     redirectOptions: {
-      exclude: ["/questions/**", "/tags/**", "/", "/signup"],
+      exclude: ["/questions**", "/tags**", "/", "/signup"],
       login: "/login",
       callback: "/confirm",
     },

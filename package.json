@@ -20,7 +20,7 @@
     "@rstore/nuxt": "^0.6.17",
     "clsx-for-tailwind": "^1.0.0",
     "kashyyyk": "^0.9.2",
-    "nuxt": "^3.17.5",
+    "nuxt": "^4.0.0",
     "vue": "^3.5.16",
     "vue-router": "^4.5.1"
   },
