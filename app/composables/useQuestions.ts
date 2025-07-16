@@ -1,4 +1,4 @@
-import type { QuestionStatus } from "../types/question";
+import type { QuestionStatus } from "~/types/question";
 
 export async function useQuestionsFeed() {
   return useAsyncData(() => {
