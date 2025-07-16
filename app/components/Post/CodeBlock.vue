@@ -13,11 +13,11 @@ const regex = /```(\w+)?\s*([\s\S]*?)```/g;
 async function splitPostToSections(): Promise<PostSection[]> {
   const parts: PostSection[] = [];
   let lastIndex = 0;
-  let text = props.text;
-  let match;
+  const text = props.text;
+  const match = regex.exec(text);
 
-  while ((match = regex.exec(text)) !== null) {
-    const [fullMatch, lang, code] = match;
+  while (match !== null) {
+    const [fullMatch, _lang, code] = match;
     const offset = match.index;
 
     if (offset > lastIndex) {
@@ -27,10 +27,12 @@ async function splitPostToSections(): Promise<PostSection[]> {
       });
     }
 
-    parts.push({
-      type: "code",
-      content: code.trim(),
-    });
+    if (code) {
+      parts.push({
+        type: "code",
+        content: code.trim(),
+      });
+    }
 
     lastIndex = offset + fullMatch.length;
   }

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Question, Answer } from "../rstore/questions";
+import type { Answer, Question } from "../rstore/questions";
 
 type Post = Question & Answer;
 

@@ -17,11 +17,8 @@ const tabs: Tab[] = [
 const route = useRoute();
 const displayTabs = computed<Tab[]>(() => {
   return tabs.map((tab) => {
-    const queryValue: string | null = Array.isArray(route.query.tab)
-      ? route.query.tab[0]
-      : route.query.tab;
-
-    const tabName: string = queryValue || "newest";
+    const query = route.query.tab as string | undefined;
+    const tabName: string = query || "newest";
 
     return {
       isActive: tabName === tab.name,

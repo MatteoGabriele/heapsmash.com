@@ -15,7 +15,7 @@ const classes = computed<string>(() => {
         variant === "default",
       "text-neutral-500 hover:text-amber-500": variant === "minimal",
       "bg-yellow-950 text-amber-500 border-amber-500": active,
-    }
+    },
   );
 });
 </script>
