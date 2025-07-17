@@ -1,17 +1,21 @@
 <script setup lang="ts">
 import type { QuestionStatus } from "~/types/question";
+import type { Tab } from "../../components/TabFilterItem.vue";
 
 const route = useRoute();
-
 const status = computed<QuestionStatus>(() => {
-  const tab = route.query.tab;
+  return getQuerystring<QuestionStatus>(route.query.status) ?? "newest";
+});
 
-  if (!tab) {
-    return "newest";
-  }
+const tabs: Tab[] = [
+  { label: "Newest", to: "/questions?status=newest" },
+  { label: "Active", to: "/questions?status=active" },
+  { label: "Unanswered", to: "/questions?status=unanswered" },
+];
 
-  const value = Array.isArray(tab) ? tab[0] : tab;
-  return value as QuestionStatus;
+const activeTab = computed<Tab>(() => {
+  const fallback = tabs[0] as Tab;
+  return tabs.find((tab) => tab.to === route.fullPath) ?? fallback;
 });
 
 const { data: questions, error } = await useQuestionByStatus(status);
@@ -21,19 +25,20 @@ if (error.value) {
 }
 
 const title = computed<string>(() => {
-  const tab = route.query.tab;
-
-  if (!tab) {
-    return "All questions";
-  }
-
-  const [first, ...all] = tab;
+  const [first, ...all] = status.value;
   return `${first?.toUpperCase()}${all.join("")} questions`;
 });
 </script>
 
 <template>
-  <PostsHeader :title :count="questions?.length ?? 0" />
+  <div class="p-4 md:pl-8">
+    <PostsHeader :title />
+    <div class="mt-8 flex justify-between">
+      <p>{{ questions?.length ?? 0 }} questions</p>
+      <TabFilterList :active-tab="activeTab" :tabs="tabs" />
+    </div>
+  </div>
+
   <PostCard
     v-for="question in questions"
     :key="question.id"

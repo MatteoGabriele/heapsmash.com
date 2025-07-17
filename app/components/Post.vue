@@ -1,10 +1,6 @@
 <script setup lang="ts">
-import type { Answer, Question } from "../rstore/questions";
-
-type Post = Question & Answer;
-
 const props = defineProps<{
-  post: Post;
+  post: any;
 }>();
 
 const votes = computed<number>(() => {

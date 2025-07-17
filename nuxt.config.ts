@@ -12,6 +12,7 @@ export default defineNuxtConfig({
     "@nuxt/test-utils",
     "@rstore/nuxt",
     "@nuxtjs/supabase",
+    '@nuxt/test-utils/module'
   ],
 
   supabase: {

@@ -5,6 +5,7 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
+    "test": "vitest",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
@@ -26,6 +27,9 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.0.2",
-    "@tailwindcss/vite": "^4.1.10"
+    "@tailwindcss/vite": "^4.1.10",
+    "@testing-library/vue": "^8.1.0",
+    "happy-dom": "^17.6.3",
+    "vitest": "^3.2.4"
   }
 }

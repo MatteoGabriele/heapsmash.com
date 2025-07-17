@@ -7,7 +7,11 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "includes": ["./app/**/*.{ts,vue}", "./server/**/*.ts"]
+    "includes": [
+      "./app/**/*.{ts,vue}",
+      "./server/**/*.ts",
+      "./vitest.config.ts"
+    ]
   },
   "formatter": {
     "enabled": true,
