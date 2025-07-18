@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import type { Tab } from "./TabFilterItem.vue";
-
 defineProps<{
-  tabs: Tab[];
-  activeTab: Tab;
+  tabs: QuestionTab[];
+  activeTab: QuestionTab;
 }>();
 </script>
 

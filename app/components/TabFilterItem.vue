@@ -1,13 +1,8 @@
 <script setup lang="ts">
 import { cn } from "clsx-for-tailwind";
 
-export type Tab = {
-  label: string;
-  to: string;
-};
-
 const props = defineProps<{
-  tab: Tab;
+  tab: QuestionTab;
   isActive: boolean;
 }>();
 
