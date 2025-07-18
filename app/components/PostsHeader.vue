@@ -4,7 +4,7 @@ defineProps<{
   counter?: number;
 }>();
 
-const { tabs, activeTab } = useQuestionTabs();
+const { tabs, activeTab } = usePostTabs();
 </script>
 
 <template>

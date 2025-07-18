@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { QuestionFeed } from "~/types/question";
+import type { PostFeed } from "~/types/post";
 
-const question = inject<QuestionFeed>("question");
+const post = inject<PostFeed>("post");
 const tags = computed<string[]>(() => {
-  return question?.tags || [];
+  return post?.tags || [];
 });
 </script>
 

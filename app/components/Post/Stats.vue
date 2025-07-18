@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { cn } from "clsx-for-tailwind";
-import type { QuestionFeed } from "~/types/question";
+import type { PostFeed } from "~/types/post";
 
-const question = inject<QuestionFeed>("question");
+const post = inject<PostFeed>("post");
 const isAnswered = computed<boolean>(() => {
-  const count: number | undefined = question?.answers_count;
+  const count: number | undefined = post?.answers_count;
   return count ? count > 0 : false;
 });
 const hasAcceptedAnswer = computed<boolean>(() => {
-  return question?.accepted_answer_id != null;
+  return post?.accepted_answer_id != null;
 });
 </script>
 
@@ -16,7 +16,7 @@ const hasAcceptedAnswer = computed<boolean>(() => {
   <div>
     <ul class="flex gap-2 items-center md:flex-col md:items-end text-sm">
       <li>
-        <span class="font-bold">{{ question?.votes.upvotes }}</span> votes
+        <span class="font-bold">{{ post?.votes.upvotes }}</span> votes
       </li>
       <li
         :class="
@@ -29,11 +29,11 @@ const hasAcceptedAnswer = computed<boolean>(() => {
       >
         <div class="flex gap-1 items-center">
           <Icon v-if="hasAcceptedAnswer" name="ph:check-bold" />
-          <span class="font-bold">{{ question?.answers_count }}</span> answers
+          <span class="font-bold">{{ post?.answers_count }}</span> answers
         </div>
       </li>
       <li>
-        <span class="font-bold">{{ question?.views }}</span> views
+        <span class="font-bold">{{ post?.views }}</span> views
       </li>
     </ul>
   </div>

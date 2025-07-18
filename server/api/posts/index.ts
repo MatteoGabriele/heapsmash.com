@@ -1,10 +1,10 @@
 import { serverSupabaseClient } from "#supabase/server";
 import type { Database } from "~/types/database";
-import type { QuestionFeed, QuestionStatus } from "~/types/question";
+import type { PostFeed, PostStatus } from "~/types/post";
 
 export default defineEventHandler(async (event) => {
   const queryParams = getQuery(event);
-  const status: QuestionStatus | undefined = Array.isArray(queryParams.status)
+  const status: PostStatus | undefined = Array.isArray(queryParams.status)
     ? queryParams.status[0]
     : queryParams.status;
 
@@ -20,11 +20,11 @@ export default defineEventHandler(async (event) => {
 
   const { data, error } = await query
     .order("created_at", { ascending: false })
-    .overrideTypes<QuestionFeed[]>();
+    .overrideTypes<PostFeed[]>();
 
   if (error) {
     throw createError({ statusMessage: error.message });
   }
 
-  return data ?? ([] as QuestionFeed[]);
+  return data ?? ([] as PostFeed[]);
 });

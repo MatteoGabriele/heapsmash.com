@@ -1,4 +1,12 @@
 <script setup lang="ts">
+const { params } = useRoute();
+</script>
+
+<template>
+  <div>post {{ params }}</div>
+</template>
+
+<!-- <script setup lang="ts">
 import { useI18n } from "kashyyyk";
 
 const { params } = useRoute();
@@ -53,4 +61,4 @@ const { t } = useI18n({
       <Post v-for="answer in data.answers" :key="answer.id" :post="answer" />
     </section>
   </div>
-</template>
+</template> -->

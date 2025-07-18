@@ -1,6 +1,6 @@
-export type QuestionStatus = "newest" | "active" | "unanswered";
+export type PostStatus = "newest" | "active" | "unanswered";
 
-type BaseQuestion = {
+type BasePost = {
   id: number;
   title: string;
   slug: string;
@@ -16,7 +16,7 @@ type BaseQuestion = {
   views: number;
 };
 
-export type Question = BaseQuestion & {
+export type Post = BasePost & {
   comments: Comment[];
   answers: Answer[];
 };
@@ -50,4 +50,4 @@ export type Votes = {
   downvotes: number;
 };
 
-export type QuestionFeed = BaseQuestion;
+export type PostFeed = BasePost;

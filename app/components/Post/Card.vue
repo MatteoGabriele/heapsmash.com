@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import type { QuestionFeed } from "~/types/question";
+import type { PostFeed } from "~/types/post";
 
 const props = defineProps<{
-  question: QuestionFeed;
+  post: PostFeed;
 }>();
 
-provide("question", props.question);
+provide("post", props.post);
 </script>
 
 <template>
@@ -20,18 +20,18 @@ provide("question", props.question);
         <h2 class="text-lg">
           <NuxtLink
             class="text-sky-300 hover:text-sky-200"
-            :to="`/questions/${question.id}/${question.slug}`"
+            :to="`/questions/${post.id}/${post.slug}`"
           >
-            {{ question.title }}
+            {{ post.title }}
           </NuxtLink>
         </h2>
       </header>
 
       <p class="text-sm line-clamp-2">
-        {{ question.body }}
+        {{ post.body }}
       </p>
 
-      <footer v-if="question.tags" class="mt-2">
+      <footer v-if="post.tags" class="mt-2">
         <PostTags />
       </footer>
     </div>

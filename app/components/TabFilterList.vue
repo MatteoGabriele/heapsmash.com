@@ -1,7 +1,7 @@
 <script setup lang="ts">
 defineProps<{
-  tabs: QuestionTab[];
-  activeTab: QuestionTab;
+  tabs: PostTab[];
+  activeTab: PostTab;
 }>();
 </script>
 

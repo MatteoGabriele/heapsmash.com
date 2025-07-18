@@ -2,7 +2,7 @@
 import { cn } from "clsx-for-tailwind";
 
 const props = defineProps<{
-  tab: QuestionTab;
+  tab: PostTab;
   isActive: boolean;
 }>();
 

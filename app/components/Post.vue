@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import type { Post } from "../types/post";
+
 const props = defineProps<{
-  post: any;
+  post: Post;
 }>();
 
 const votes = computed<number>(() => {

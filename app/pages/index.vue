@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { data, error } = await useQuestionsFeed();
+const { data, error } = await usePostsFeed();
 
 if (error.value) {
   throw createError(error.value);
@@ -8,5 +8,5 @@ if (error.value) {
 
 <template>
   <PostsHeader title="Newest questions" :counter="data?.length" />
-  <PostCard v-for="question in data" :key="question.id" :question="question" />
+  <PostCard v-for="post in data" :key="post.id" :post="post" />
 </template>
