@@ -14,11 +14,6 @@ if (error.value) {
 </script>
 
 <template>
-  <NuxtLayout name="questions">
-    <PostCard
-      v-for="question in data"
-      :key="question.id"
-      :question="question"
-    />
-  </NuxtLayout>
+  <PostsHeader title="Newest questions" :counter="data?.length" />
+  <PostCard v-for="question in data" :key="question.id" :question="question" />
 </template>
