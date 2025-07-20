@@ -10,15 +10,6 @@ if (error.value) {
   throw createError(error.value);
 }
 
-const votes = computed<number>(() => {
-  if (!data.value?.votes) {
-    return 0;
-  }
-
-  const { downvotes, upvotes } = data.value.votes;
-  return upvotes - downvotes;
-});
-
 const { t } = useI18n({
   en: {
     answers: "0 Answers | 1 Answer | {count} Answers",
@@ -41,16 +32,15 @@ const { t } = useI18n({
     </header>
 
     <div class="py-6 flex gap-4">
-      <PostVote :votes="votes" />
+      <PostVote :votes="data.votes.upvotes - data.votes.downvotes" />
       <div>
         <PostBody :text="data.body" />
         <Tags v-if="data.tags.length" class="mt-4" :tags="data.tags" />
-
-        <ul class="mt-6 space-y-2" v-if="data.comments.length">
-          <li v-for="comment in data.comments" :key="comment.id">
-            {{ comment.body }}
-          </li>
-        </ul>
+        <PostComments
+          class="mt-6"
+          :comments="data.comments"
+          v-if="data.comments"
+        />
       </div>
     </div>
 
@@ -64,11 +54,11 @@ const { t } = useI18n({
             <PostVote :votes="answer.votes.upvotes - answer.votes.downvotes" />
             <div>
               <PostBody :text="answer.body" />
-              <ul class="mt-6" v-if="answer.comments.length">
-                <li v-for="comment in answer.comments" :key="comment.id">
-                  {{ comment.body }}
-                </li>
-              </ul>
+              <PostComments
+                class="mt-6"
+                :comments="answer.comments"
+                v-if="answer.comments"
+              />
             </div>
           </div>
         </li>

@@ -15,7 +15,7 @@ defineProps<{
     >
       <div class="flex items-start gap-2">
         <div class="text-sm min-w-2">
-          <span v-if="comment.votes">{{ comment.votes }}</span>
+          <!-- <span v-if="comment.votes">{{ comment.votes }}</span> -->
         </div>
         <div>
           <VoteButton direction="up" variant="minimal" />
