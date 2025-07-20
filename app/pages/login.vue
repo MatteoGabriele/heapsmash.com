@@ -9,15 +9,13 @@ watchEffect(() => {
 });
 
 async function signIn(): Promise<void> {
-  const { data, error } = await supabase.auth.signInWithOAuth({
+  const { error } = await supabase.auth.signInWithOAuth({
     provider: "github",
   });
 
   if (error) {
     throw createError(error);
   }
-
-  console.log(data);
 }
 </script>
 

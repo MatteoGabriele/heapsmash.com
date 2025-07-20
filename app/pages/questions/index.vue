@@ -10,7 +10,11 @@ const status = computed<PostStatus>(() => {
   return queryValue ?? "newest";
 });
 
-const { data, error } = await usePostByStatus(status);
+const { data, error } = await usePostsWithFilters(
+  reactive({
+    status,
+  })
+);
 
 if (error.value) {
   throw createError(error.value);
