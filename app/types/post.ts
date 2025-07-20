@@ -6,9 +6,9 @@ type BasePost = {
   slug: string;
   body: string;
   created_at: string;
-  user: User;
+  user: PostUser;
   tags: string[];
-  votes: Votes;
+  votes: PostVotes;
   answers_count: number;
   accepted_answer_id: number | null;
   is_answered: boolean;
@@ -16,36 +16,35 @@ type BasePost = {
   views: number;
 };
 
-export type Post = BasePost & {
-  comments: Comment[];
-  answers: Answer[];
+export type PostDetails = BasePost & {
+  comments: PostComment[];
+  answers: PostAnswer[];
 };
 
-export type User = {
+export type PostUser = {
   id: string;
   username: string;
   avatar_url: string | null;
 };
 
-export type Answer = {
+export type PostAnswer = {
   id: number;
   body: string;
-  user: User;
+  user: PostUser;
   created_at: string;
   is_accepted: boolean;
-  votes: Votes;
-  comments: Comment[];
+  votes: PostVotes;
+  comments: PostComment[];
 };
 
-export type Comment = {
+export type PostComment = {
   id: number;
   body: string;
-  user: User;
-  votes: number;
+  user: PostUser;
   created_at: string;
 };
 
-export type Votes = {
+export type PostVotes = {
   upvotes: number;
   downvotes: number;
 };

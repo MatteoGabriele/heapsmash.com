@@ -1,7 +1,5 @@
-import type { LocationQueryValue } from "vue-router";
-
 export function getQuerystring<T extends string>(
-  queryValue: LocationQueryValue | LocationQueryValue[] | undefined,
+  queryValue: T | T[] | undefined,
 ): T | undefined {
   if (!queryValue) {
     return;

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { Comment } from "../../rstore/questions";
+import type { PostComment } from "~/types/post";
 
 defineProps<{
-  comments: Comment[];
+  comments: PostComment[];
 }>();
 </script>
 

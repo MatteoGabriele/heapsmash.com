@@ -8,7 +8,7 @@ const { tabs, activeTab } = usePostTabs();
 </script>
 
 <template>
-  <div class="p-4 md:pl-8">
+  <div class="p-4 md:pl-6">
     <header class="flex justify-between items-center">
       <h1 class="text-2xl">{{ title }}</h1>
       <NuxtLink

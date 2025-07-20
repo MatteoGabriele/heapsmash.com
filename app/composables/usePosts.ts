@@ -6,13 +6,48 @@ export async function usePostsFeed() {
   });
 }
 
-export async function usePostByStatus(status: Ref<PostStatus>) {
+export async function usePostById(id: MaybeRef<number | string | undefined>) {
+  const idRef = ref(id);
+
+  if (idRef.value === undefined) {
+    throw createError({
+      statusMessage: "Cannot find this question",
+      statusCode: 404,
+    });
+  }
+
   return useAsyncData(
     () => {
-      return $fetch(`/api/posts?status=${status.value}`);
+      return $fetch(`/api/posts/${idRef.value}`);
     },
     {
-      watch: [status],
+      watch: [idRef],
+    },
+  );
+}
+
+export async function usePostByStatus(status: MaybeRef<PostStatus>) {
+  const statusRef = ref(status);
+  return useAsyncData(
+    () => {
+      return $fetch(`/api/posts?status=${statusRef.value}`);
+    },
+    {
+      watch: [statusRef],
+    },
+  );
+}
+
+export async function useAnswersByPostId(
+  postId: MaybeRef<number | string | undefined>,
+) {
+  const postIdRef = ref(postId);
+  return useAsyncData(
+    () => {
+      return $fetch(`/api/posts/${postIdRef.value}/answers`);
+    },
+    {
+      watch: [postIdRef],
     },
   );
 }
