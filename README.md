@@ -1,75 +1,22 @@
-# Nuxt Minimal Starter
+<img width="400" height="400" alt="image" src="https://api.iconify.design/game-icons:hammer-break.svg?color=%23ffffff" />
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-## Setup
+# Heapsmash (wip)
 
-Make sure to install dependencies:
+Heapsmash is a privacy-focused, open-source Q&A platform inspired by Stack Overflow — but without the AI and open-source. Built for communities that want full control over their knowledge base.
 
-```bash
-# npm
-npm install
+## 🔒 Why Heapsmash?
 
-# pnpm
-pnpm install
+- No AI — just humans.
+- Designed with privacy in mind.
+- Open source.
 
-# yarn
-yarn install
+## 🚀 Features
 
-# bun
-bun install
-```
+TBD
 
-## Development Server
+## 📦 Tech Stack
 
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+- Nuxt
+- Supabase
+- Netlify
