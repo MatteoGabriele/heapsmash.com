@@ -1,6 +1,6 @@
 export function getQuerystring<T extends string>(
   queryValue: T | T[] | undefined,
-): T | undefined {
+): string | undefined {
   if (!queryValue) {
     return;
   }

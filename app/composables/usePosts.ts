@@ -1,4 +1,4 @@
-import type { PostStatus } from "~/types/post";
+import type { PostFeed, PostStatus } from "~/types/post";
 
 export async function usePostsFeed() {
   return useAsyncData(() => {
@@ -35,31 +35,15 @@ export async function usePostsWithFilters(
   options: MaybeRef<Partial<UsePostsWithFiltersOptions>> = {},
 ) {
   const filtersQuery = computed<string>(() => {
-    return createQueryStringFromObject(unref(options));
+    const object = unref(options);
+    return createQueryStringFromObject(object);
   });
 
-  return useAsyncData(
-    () => {
-      return $fetch(`/api/posts?${filtersQuery.value}`);
-    },
-    {
-      watch: [filtersQuery],
-    },
-  );
-}
+  const url = computed<string>(() => `/api/posts?${filtersQuery.value}`);
 
-export async function useAnswersByPostId(
-  postId: MaybeRef<number | string | undefined>,
-) {
-  const postIdRef = ref(postId);
-  return useAsyncData(
-    () => {
-      return $fetch(`/api/posts/${postIdRef.value}/answers`);
-    },
-    {
-      watch: [postIdRef],
-    },
-  );
+  return useFetch<PostFeed[]>(url, {
+    key: filtersQuery,
+  });
 }
 
 export type PostTab = {
@@ -95,8 +79,10 @@ export function usePostTabs(): UsePostTabsReturn {
 }
 
 export function useTagTabs(): UsePostTabsReturn {
+  const route = useRoute();
+
   const tabs = computed<PostTab[]>(() => {
-    const path = `?status=`;
+    const path = `/questions/tags/${route.params.name}?status=`;
     return [
       { label: "Newest", to: `${path}newest` },
       { label: "Active", to: `${path}active` },
@@ -104,7 +90,6 @@ export function useTagTabs(): UsePostTabsReturn {
     ];
   });
 
-  const route = useRoute();
   const activeTab = computed<PostTab>(() => {
     const fallback = tabs.value[0] as PostTab;
     return tabs.value.find((tab) => tab.to === route.fullPath) ?? fallback;
