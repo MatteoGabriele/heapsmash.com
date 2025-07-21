@@ -3,7 +3,7 @@
 
 # Heapsmash (wip)
 
-Heapsmash is a privacy-focused, open-source Q&A platform inspired by Stack Overflow — but without the AI and open-source. Built for communities that want full control over their knowledge base.
+A privacy-focused, open-source Q&A platform inspired by Stack Overflow. 
 
 ## 🔒 Why Heapsmash?
 
