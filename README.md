@@ -19,4 +19,4 @@ A privacy-focused, open-source Q&A platform heavily inspired by Stack Overflow â
 
 ---
 
-Heapsmash is a work in progress created in spare time, and it may never be completed â€” but development is underway regardless. Contributions, ideas, and feedback are always welcome!
+Heapsmash is a work in progress, created in spare time, and it may never be completed; however, development is underway regardless.
