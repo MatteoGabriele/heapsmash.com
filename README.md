@@ -3,13 +3,16 @@
 
 # Heapsmash (WIP)
 
-A privacy-focused, open-source Q&A platform heavily inspired by Stack Overflow — no AI, no tracking, just humans helping humans.
+A privacy-focused, open-source Q&A platform heavily inspired by Stack Overflow.
 
 ## 🔒 Why Heapsmash?
 
-- No AI — 100% human-powered.
-- Privacy-first by design.
-- Fully open source.
+- No AI
+- No tracking
+- No data harvesting
+- Privacy-first by design
+- Fully open source
+- Made by humans for humans
 
 ## 📦 Tech Stack
 
