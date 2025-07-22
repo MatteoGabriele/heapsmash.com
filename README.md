@@ -7,12 +7,12 @@ A privacy-focused, open-source Q&A platform heavily inspired by Stack Overflow.
 
 ## 🔒 Why Heapsmash?
 
-- No AI
-- No tracking
-- No data harvesting
-- Privacy-first by design
-- Fully open source
-- Made by humans for humans
+- No tracking.
+- No data harvesting for ads.
+- No AI scraping for training.
+- Privacy-first.
+- Fully open source.
+- Made by humans for humans.
 
 ## 📦 Tech Stack
 
