@@ -32,9 +32,6 @@ const hasAcceptedAnswer = computed<boolean>(() => {
           <span class="font-bold">{{ post?.answers_count }}</span> answers
         </div>
       </li>
-      <li>
-        <span class="font-bold">{{ post?.views }}</span> views
-      </li>
     </ul>
   </div>
 </template>

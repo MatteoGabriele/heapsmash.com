@@ -22,16 +22,32 @@ const { t } = useI18n({
     <header class="border-b pb-4 border-b-neutral-700">
       <h2 id="question_title" class="text-2xl">{{ data.title }}</h2>
       <ul class="flex gap-2 mt-2 text-sm text-neutral-300">
-        <li>Asked <span class="text-white">today</span></li>
-        <li>Modified <span class="text-white">today</span></li>
         <li>
-          Viewed
-          <span class="text-white">{{ data.views }} times</span>
+          Asked
+          <NuxtTime
+            class="text-white"
+            :datetime="data.created_at"
+            date-style="medium"
+            time-style="short"
+            relative
+            title
+          />
+        </li>
+        <li>
+          Modified
+          <NuxtTime
+            class="text-white"
+            :datetime="data.last_activity_at || data.created_at"
+            date-style="medium"
+            time-style="short"
+            relative
+            title
+          />
         </li>
       </ul>
     </header>
 
-    <div class="py-6 flex gap-4">
+    <div class="py-6 px-2 flex gap-4">
       <PostVote :votes="data.votes.upvotes - data.votes.downvotes" />
       <div>
         <PostBody :text="data.body" />
@@ -44,7 +60,7 @@ const { t } = useI18n({
       </div>
     </div>
 
-    <section aria-labelledby="answers_title" class="mt-12">
+    <section aria-labelledby="answers_title" class="mt-12 px-2">
       <h2 id="answers_title" class="text-xl">
         {{ t("answers", { count: data.answers.length }) }}
       </h2>

@@ -5,7 +5,7 @@ defineProps<{
 </script>
 
 <template>
-  <ul class="flex gap-2">
+  <ul class="flex gap-2 flex-wrap">
     <li v-for="tag in tags" :key="tag">
       <NuxtLink
         class="text-xs bg-neutral-700 text-neutral-200 rounded-lg px-2 py-1 hover:bg-neutral-600"
