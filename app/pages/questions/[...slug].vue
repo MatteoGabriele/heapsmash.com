@@ -33,11 +33,11 @@ const { t } = useI18n({
             title
           />
         </li>
-        <li>
+        <li v-if="data.last_activity_at">
           Modified
           <NuxtTime
             class="text-white"
-            :datetime="data.last_activity_at || data.created_at"
+            :datetime="data.last_activity_at"
             date-style="medium"
             time-style="short"
             relative
@@ -80,5 +80,7 @@ const { t } = useI18n({
         </li>
       </ul>
     </section>
+
+    <PostAnswerForm class="mt-12" :post-id="data.id" />
   </section>
 </template>
