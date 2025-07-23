@@ -22,7 +22,7 @@ const selectedLanguage = computed({
 <template>
   <NodeViewWrapper class="relative hljs">
     <select
-      class="absolute bg-white text-neutral-600 right-2 top-2"
+      class="absolute bg-white text-neutral-600 right-4 top-4"
       contenteditable="false"
       v-model="selectedLanguage"
     >
@@ -36,7 +36,7 @@ const selectedLanguage = computed({
         {{ language }}
       </option>
     </select>
-    <pre>
+    <pre class="my-2 p-4">
       <code>
         <NodeViewContent />
       </code>
