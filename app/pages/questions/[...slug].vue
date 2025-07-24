@@ -67,7 +67,17 @@ const { t } = useI18n({
       <ul>
         <li v-for="answer in data.answers" :key="answer.id">
           <div class="py-6 flex gap-4">
-            <PostVote :votes="answer.votes.upvotes - answer.votes.downvotes" />
+            <div class="flex flex-col items-center gap-4">
+              <PostVote
+                :votes="answer.votes.upvotes - answer.votes.downvotes"
+              />
+              <div v-if="data.accepted_answer_id === answer.id">
+                <Icon
+                  class="text-green-300 text-2xl"
+                  name="ph:check-fat-fill"
+                />
+              </div>
+            </div>
             <div>
               <PostBody :text="answer.body" />
               <PostComments

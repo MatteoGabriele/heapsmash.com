@@ -19,11 +19,11 @@ defineProps<{
         </div>
         <div>
           <VoteButton direction="up" variant="minimal" />
-          <button
+          <!-- <button
             class="transition-colors duration-300 text-neutral-500 hover:text-red-500"
           >
             <Icon name="ph:flag-fill" />
-          </button>
+          </button> -->
         </div>
       </div>
       <div class="text-sm space-x-1">
