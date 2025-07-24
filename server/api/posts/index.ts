@@ -11,8 +11,6 @@ export default defineEventHandler(async (event) => {
 
   if (status === "unanswered") {
     query.eq("answers_count", 0);
-  } else if (status === "active") {
-    query.gt("views", 0);
   }
 
   if (tag) {

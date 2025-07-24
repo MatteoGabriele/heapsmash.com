@@ -61,7 +61,6 @@ export function usePostTabs(): UsePostTabsReturn {
     const path = `/questions?status=`;
     return [
       { label: "Newest", to: `${path}newest` },
-      { label: "Active", to: `${path}active` },
       { label: "Unanswered", to: `${path}unanswered` },
     ];
   });
@@ -85,7 +84,6 @@ export function useTagTabs(): UsePostTabsReturn {
     const path = `/questions/tags/${route.params.name}?status=`;
     return [
       { label: "Newest", to: `${path}newest` },
-      { label: "Active", to: `${path}active` },
       { label: "Unanswered", to: `${path}unanswered` },
     ];
   });
