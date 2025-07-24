@@ -49,14 +49,20 @@ const { t } = useI18n({
 
     <div class="py-6 px-2 flex gap-4">
       <PostVote :votes="data.votes.upvotes - data.votes.downvotes" />
-      <div>
+      <div class="flex flex-col gap-6">
         <PostBody :text="data.body" />
-        <Tags v-if="data.tags.length" class="mt-4" :tags="data.tags" />
-        <PostComments
-          class="mt-6"
-          :comments="data.comments"
-          v-if="data.comments"
-        />
+
+        <div class="flex justify-end">
+          <PostUserCard
+            is-post-owner
+            :date="data.created_at"
+            :user="data.user"
+          />
+        </div>
+
+        <Tags v-if="data.tags.length" :tags="data.tags" />
+
+        <PostComments :comments="data.comments" v-if="data.comments" />
       </div>
     </div>
 
@@ -78,10 +84,18 @@ const { t } = useI18n({
                 />
               </div>
             </div>
-            <div>
+            <div class="flex flex-col gap-6">
               <PostBody :text="answer.body" />
+
+              <div class="flex justify-end">
+                <PostUserCard
+                  is-post-answer
+                  :date="answer.created_at"
+                  :user="answer.user"
+                />
+              </div>
+
               <PostComments
-                class="mt-6"
                 :comments="answer.comments"
                 v-if="answer.comments"
               />

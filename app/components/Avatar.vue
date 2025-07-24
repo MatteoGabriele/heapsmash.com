@@ -1,12 +1,24 @@
 <script setup lang="ts">
-defineProps<{
-  image?: string;
+import { cn } from "clsx-for-tailwind";
+
+const { size = "sm", shape = "circle" } = defineProps<{
+  image?: string | null;
+  size?: "sm" | "md" | "lg";
+  shape?: "square" | "circle";
 }>();
 </script>
 
 <template>
   <div
-    class="bg-neutral-600 rounded-full overflow-hidden flex size-6 items-center justify-center"
+    :class="
+      cn('bg-neutral-600 overflow-hidden flex items-center justify-center', {
+        'size-6': size === 'sm',
+        'size-8': size === 'md',
+        'size-10': size === 'lg',
+        'rounded-full': shape === 'circle',
+        'rounded-sm': shape === 'square',
+      })
+    "
   >
     <img v-if="image" :src="image" alt="user avatar" />
     <span v-else aria-label="user avatar">
