@@ -52,7 +52,8 @@ const { t } = useI18n({
       <div class="flex flex-col gap-6">
         <PostBody :text="data.body" />
 
-        <div class="flex justify-end">
+        <div class="flex justify-between gap-4">
+          <PostQuickActions :post-id="data.id" />
           <PostUserCard
             is-post-owner
             :date="data.created_at"
@@ -87,7 +88,8 @@ const { t } = useI18n({
             <div class="flex flex-col gap-6">
               <PostBody :text="answer.body" />
 
-              <div class="flex justify-end">
+              <div class="flex justify-between gap-4">
+                <PostQuickActions :post-id="answer.id" />
                 <PostUserCard
                   is-post-answer
                   :date="answer.created_at"
