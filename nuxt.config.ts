@@ -3,6 +3,8 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
 
+  css: ['highlight.js/styles/panda-syntax-dark.min.css'],
+
   modules: [
     "@nuxt/fonts",
     "@nuxt/icon",

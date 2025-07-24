@@ -33,11 +33,11 @@ const { t } = useI18n({
             title
           />
         </li>
-        <li>
+        <li v-if="data.last_activity_at">
           Modified
           <NuxtTime
             class="text-white"
-            :datetime="data.last_activity_at || data.created_at"
+            :datetime="data.last_activity_at"
             date-style="medium"
             time-style="short"
             relative
@@ -49,14 +49,20 @@ const { t } = useI18n({
 
     <div class="py-6 px-2 flex gap-4">
       <PostVote :votes="data.votes.upvotes - data.votes.downvotes" />
-      <div>
+      <div class="flex flex-col gap-6">
         <PostBody :text="data.body" />
-        <Tags v-if="data.tags.length" class="mt-4" :tags="data.tags" />
-        <PostComments
-          class="mt-6"
-          :comments="data.comments"
-          v-if="data.comments"
-        />
+
+        <div class="flex justify-end">
+          <PostUserCard
+            is-post-owner
+            :date="data.created_at"
+            :user="data.user"
+          />
+        </div>
+
+        <Tags v-if="data.tags.length" :tags="data.tags" />
+
+        <PostComments :comments="data.comments" v-if="data.comments" />
       </div>
     </div>
 
@@ -67,11 +73,29 @@ const { t } = useI18n({
       <ul>
         <li v-for="answer in data.answers" :key="answer.id">
           <div class="py-6 flex gap-4">
-            <PostVote :votes="answer.votes.upvotes - answer.votes.downvotes" />
-            <div>
+            <div class="flex flex-col items-center gap-4">
+              <PostVote
+                :votes="answer.votes.upvotes - answer.votes.downvotes"
+              />
+              <div v-if="data.accepted_answer_id === answer.id">
+                <Icon
+                  class="text-green-300 text-2xl"
+                  name="ph:check-fat-fill"
+                />
+              </div>
+            </div>
+            <div class="flex flex-col gap-6">
               <PostBody :text="answer.body" />
+
+              <div class="flex justify-end">
+                <PostUserCard
+                  is-post-answer
+                  :date="answer.created_at"
+                  :user="answer.user"
+                />
+              </div>
+
               <PostComments
-                class="mt-6"
                 :comments="answer.comments"
                 v-if="answer.comments"
               />
@@ -80,5 +104,7 @@ const { t } = useI18n({
         </li>
       </ul>
     </section>
+
+    <PostAnswerForm class="mt-12" :post-id="data.id" />
   </section>
 </template>

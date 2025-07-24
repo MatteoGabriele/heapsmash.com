@@ -2,8 +2,6 @@
 import hljs from "highlight.js";
 import { marked } from "marked";
 
-import "highlight.js/styles/a11y-dark.css";
-
 const renderer = new marked.Renderer();
 renderer.codespan = ({ text }) => `<code class="hljs">${text}</code>`;
 renderer.code = ({ text, lang }) => {
