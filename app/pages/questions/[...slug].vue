@@ -3,11 +3,33 @@ import { useI18n } from "kashyyyk";
 
 const { params } = useRoute();
 const id = computed<string | undefined>(() => params.slug?.[0]);
+const secondaryIdentifier = computed<string | undefined>(() => {
+  return params.slug?.[1];
+});
+const hasAnswerId = computed<boolean>(() => {
+  if (secondaryIdentifier.value === undefined) {
+    return false;
+  }
+
+  if (Number.isNaN(secondaryIdentifier.value)) {
+    return false;
+  }
+
+  return true;
+});
 
 const { data, error } = await usePostById(id);
 
 if (error.value) {
   throw createError(error.value);
+}
+
+if (secondaryIdentifier.value !== data.value?.slug) {
+  await navigateTo({
+    path: `/questions/${id.value}/${data.value?.slug}`,
+    hash: hasAnswerId.value ? `#a${secondaryIdentifier.value}` : "",
+    replace: true,
+  });
 }
 
 const { t } = useI18n({
@@ -72,7 +94,12 @@ const { t } = useI18n({
         {{ t("answers", { count: data.answers.length }) }}
       </h2>
       <ul>
-        <li v-for="answer in data.answers" :key="answer.id">
+        <li
+          v-for="answer in data.answers"
+          :key="answer.id"
+          :id="`a${answer.id}`"
+          class="scroll-m-14"
+        >
           <div class="py-6 flex gap-4">
             <div class="flex flex-col items-center gap-4">
               <PostVote
@@ -89,7 +116,7 @@ const { t } = useI18n({
               <PostBody :text="answer.body" />
 
               <div class="flex justify-between gap-4">
-                <PostQuickActions :post-id="answer.id" />
+                <PostQuickActions :answer-id="answer.id" :post-id="data.id" />
                 <PostUserCard
                   is-post-answer
                   :date="answer.created_at"

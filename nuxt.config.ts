@@ -14,6 +14,12 @@ export default defineNuxtConfig({
     '@nuxt/test-utils/module',
     "@nuxtjs/tailwindcss",
   ],
+  
+  runtimeConfig: {
+    public: {
+      siteUrl: 'http://localhost:3000'
+    }
+  },
 
   supabase: {
     redirectOptions: {
