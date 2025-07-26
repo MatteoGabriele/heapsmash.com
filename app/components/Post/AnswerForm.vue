@@ -9,6 +9,6 @@ const answer = ref<string | null>(null);
 <template>
   <div>
     <h2>You answer</h2>
-    <Editor class="mt-4" />
+    <EditorComposer class="mt-4" />
   </div>
 </template>
