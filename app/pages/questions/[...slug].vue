@@ -71,7 +71,7 @@ const { t } = useI18n({
 
     <div class="py-6 px-2 flex gap-4">
       <PostVote :votes="data.votes.upvotes - data.votes.downvotes" />
-      <div class="flex flex-col gap-6">
+      <div class="flex flex-col gap-6 w-full">
         <PostBody :text="data.body" />
 
         <div class="flex justify-between gap-4">
@@ -112,7 +112,7 @@ const { t } = useI18n({
                 />
               </div>
             </div>
-            <div class="flex flex-col gap-6">
+            <div class="flex flex-col gap-6 w-full">
               <PostBody :text="answer.body" />
 
               <div class="flex justify-between gap-4">

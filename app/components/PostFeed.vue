@@ -6,6 +6,12 @@ const props = defineProps<{
 }>();
 
 provide("post", props.post);
+
+const bodyFormatted = computed<string>(() => {
+  return props.post.body
+    .replace(/```[a-zA-Z]*\n([\s\S]*?)```/g, "$1")
+    .replace(/`([^`]+)`/g, "$1");
+});
 </script>
 
 <template>
@@ -28,7 +34,7 @@ provide("post", props.post);
       </header>
 
       <p class="text-sm line-clamp-2">
-        {{ post.body }}
+        {{ bodyFormatted }}
       </p>
 
       <footer v-if="post.tags" class="mt-2">

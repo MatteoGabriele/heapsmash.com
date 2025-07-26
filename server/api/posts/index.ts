@@ -11,6 +11,8 @@ export default defineEventHandler(async (event) => {
 
   if (status === "unanswered") {
     query.eq("answers_count", 0);
+  } else if (status === "answered") {
+    query.eq("is_answered", true);
   }
 
   if (tag) {
