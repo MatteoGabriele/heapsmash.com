@@ -1,4 +1,5 @@
 import type { PostFeed, PostStatus } from "~/types/post";
+import type { Vote } from "~/types/vote";
 
 export async function usePostsFeed() {
   return useAsyncData(() => {
@@ -98,5 +99,28 @@ export function useTagTabs(): UsePostTabsReturn {
   return {
     tabs,
     activeTab,
+  };
+}
+
+type UsePostVoteReturn = {
+  updateVote: (vote: Vote) => Promise<void>;
+};
+
+export function usePostVote(
+  id: MaybeRef<number | string | undefined>,
+): UsePostVoteReturn {
+  const idRef = ref(id);
+
+  function updateVote(vote: Vote): Promise<void> {
+    return $fetch(`/api/posts/${idRef.value}`, {
+      method: "POST",
+      body: {
+        vote,
+      },
+    });
+  }
+
+  return {
+    updateVote,
   };
 }

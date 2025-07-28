@@ -6,30 +6,30 @@ type UseVotesReturn = {
   downVote: () => void;
 };
 
-export default function useVotes(votes: number): UseVotesReturn {
-  const localVotes = ref<number>(votes);
+export default function useVotes(votes: Ref<number>): UseVotesReturn {
+  const localVotes = ref(votes);
 
   const hasUpVoted = computed<boolean>(() => {
-    return localVotes.value === votes + 1;
+    return localVotes.value === votes.value + 1;
   });
 
   const hasDownVoted = computed<boolean>(() => {
-    return localVotes.value === votes - 1;
+    return localVotes.value === votes.value - 1;
   });
 
   function upVote(): void {
-    if (localVotes.value > votes) {
-      localVotes.value = votes;
+    if (localVotes.value > votes.value) {
+      localVotes.value = votes.value;
     } else {
-      localVotes.value = votes + 1;
+      localVotes.value = votes.value + 1;
     }
   }
 
   function downVote(): void {
-    if (localVotes.value < votes) {
-      localVotes.value = votes;
+    if (localVotes.value < votes.value) {
+      localVotes.value = votes.value;
     } else {
-      localVotes.value = votes - 1;
+      localVotes.value = votes.value - 1;
     }
   }
 

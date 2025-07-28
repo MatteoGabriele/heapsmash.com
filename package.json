@@ -11,7 +11,8 @@
     "postinstall": "nuxt prepare",
     "check": "biome check",
     "fix": "biome check --write",
-    "lint": "biome lint"
+    "lint": "biome lint",
+    "supabase": "supabase"
   },
   "dependencies": {
     "@nuxt/fonts": "^0.11.4",
@@ -41,9 +42,11 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.0.2",
+    "@iconify-json/ph": "^1.2.2",
     "@nuxtjs/tailwindcss": "^7.0.0-beta.0",
     "@testing-library/vue": "^8.1.0",
     "happy-dom": "^17.6.3",
+    "supabase": "^2.31.8",
     "vitest": "^3.2.4"
   }
 }

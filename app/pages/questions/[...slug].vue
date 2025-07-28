@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from "kashyyyk";
+import type { Vote } from "../../types/vote";
 
 const { params } = useRoute();
 const id = computed<string | undefined>(() => params.slug?.[0]);
@@ -18,7 +19,7 @@ const hasAnswerId = computed<boolean>(() => {
   return true;
 });
 
-const { data, error } = await usePostById(id);
+const { data, error, refresh } = await usePostById(id);
 
 if (error.value) {
   throw createError(error.value);
@@ -37,6 +38,16 @@ const { t } = useI18n({
     answers: "0 Answers | 1 Answer | {count} Answers",
   },
 });
+
+const { data: userVote, refresh: refreshUserVote } = await useFetch(
+  `/api/posts/${id.value}/votes`
+);
+const { updateVote } = usePostVote(id);
+async function handleVote(vote: Vote): Promise<void> {
+  await updateVote(vote);
+  await refresh();
+  await refreshUserVote();
+}
 </script>
 
 <template>
@@ -70,7 +81,11 @@ const { t } = useI18n({
     </header>
 
     <div class="py-6 px-2 flex gap-4">
-      <PostVote :votes="data.votes.upvotes - data.votes.downvotes" />
+      <PostVote
+        @voted="handleVote"
+        :votes="data.votes.upvotes - data.votes.downvotes"
+        :initial-vote="userVote?.vote as Vote"
+      />
       <div class="flex flex-col gap-6 w-full">
         <PostBody :text="data.body" />
 

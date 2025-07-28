@@ -10,13 +10,23 @@ const isAnswered = computed<boolean>(() => {
 const hasAcceptedAnswer = computed<boolean>(() => {
   return post?.accepted_answer_id != null;
 });
+
+const votes = computed<number>(() => {
+  if (!post) {
+    return 0;
+  }
+
+  const { upvotes, downvotes } = post.votes;
+
+  return upvotes - downvotes;
+});
 </script>
 
 <template>
   <div>
     <ul class="flex gap-2 items-center md:flex-col md:items-end text-sm">
       <li>
-        <span class="font-bold">{{ post?.votes.upvotes }}</span> votes
+        <span class="font-bold">{{ votes }}</span> votes
       </li>
       <li
         :class="

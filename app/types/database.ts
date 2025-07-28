@@ -1,3 +1,7 @@
+
+> supabase
+> supabase gen types typescript --project-id fwuarmzlsgtdvpbchevu --schema public
+
 export type Json =
   | string
   | number
@@ -303,61 +307,33 @@ export type Database = {
       }
       votes: {
         Row: {
-          answer_id: number | null
-          comment_id: number | null
           created_at: string | null
           id: string
-          question_id: number | null
-          user_id: string | null
-          vote_type: string | null
+          target_id: number
+          target_type: string
+          updated_at: string | null
+          user_id: string
+          vote: number | null
         }
         Insert: {
-          answer_id?: number | null
-          comment_id?: number | null
           created_at?: string | null
           id?: string
-          question_id?: number | null
-          user_id?: string | null
-          vote_type?: string | null
+          target_id: number
+          target_type: string
+          updated_at?: string | null
+          user_id: string
+          vote?: number | null
         }
         Update: {
-          answer_id?: number | null
-          comment_id?: number | null
           created_at?: string | null
           id?: string
-          question_id?: number | null
-          user_id?: string | null
-          vote_type?: string | null
+          target_id?: number
+          target_type?: string
+          updated_at?: string | null
+          user_id?: string
+          vote?: number | null
         }
         Relationships: [
-          {
-            foreignKeyName: "votes_answer_id_fkey"
-            columns: ["answer_id"]
-            isOneToOne: false
-            referencedRelation: "answers"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "votes_question_id_fkey"
-            columns: ["question_id"]
-            isOneToOne: false
-            referencedRelation: "question_detail"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "votes_question_id_fkey"
-            columns: ["question_id"]
-            isOneToOne: false
-            referencedRelation: "question_feed"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "votes_question_id_fkey"
-            columns: ["question_id"]
-            isOneToOne: false
-            referencedRelation: "questions"
-            referencedColumns: ["id"]
-          },
           {
             foreignKeyName: "votes_user_id_fkey"
             columns: ["user_id"]
@@ -411,7 +387,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      vote: "1" | "-1"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -538,6 +514,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      vote: ["1", "-1"],
+    },
   },
 } as const

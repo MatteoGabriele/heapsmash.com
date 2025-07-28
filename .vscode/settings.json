@@ -1,5 +1,6 @@
 {
   "editor.defaultFormatter": "biomejs.biome",
+  "biome.lsp.bin": "node_modules/@biomejs/cli-darwin-x64/biome",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "quickfix.biome": "explicit",

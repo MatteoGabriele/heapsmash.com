@@ -10,6 +10,10 @@
     "includes": [
       "./app/**/*.{ts,vue}",
       "./server/**/*.ts",
+      "./server/**/*.post.ts",
+      "./server/**/*.get.ts",
+      "./server/**/*.put.ts",
+      "./server/**/*.delete.ts",
       "./vitest.config.ts"
     ]
   },

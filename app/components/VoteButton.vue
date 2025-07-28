@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { cn } from "clsx-for-tailwind";
+import type { VoteType } from "~/types/vote";
 
 const { variant = "default", active } = defineProps<{
   variant?: "default" | "minimal";
-  direction: "up" | "down";
+  direction: VoteType;
   active?: boolean;
 }>();
 
@@ -15,7 +16,7 @@ const classes = computed<string>(() => {
         variant === "default",
       "text-neutral-500 hover:text-amber-500": variant === "minimal",
       "bg-yellow-950 text-amber-500 border-amber-500": active,
-    },
+    }
   );
 });
 </script>
