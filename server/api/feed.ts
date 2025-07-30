@@ -25,8 +25,8 @@ async function getFeed(response: Response): Promise<Feed[]> {
 }
 
 const resouces = {
-  hackernews: "https://hnrss.org/newest?count=5&points=100",
-  jobs: "https://hnrss.org/jobs?count=2",
+  hackernews: "https://hnrss.org/newest?count=5&points=500",
+  jobs: "https://hnrss.org/jobs?q=engineers&count=3",
 };
 
 export default defineCachedEventHandler(
