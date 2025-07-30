@@ -3,7 +3,20 @@
 @theme {
   --font-logo: 'General Sans', sans-serif;
   --text-sm: 0.813rem;
+  
+  --color-hs-50:  #f8f9f9;
+  --color-hs-100: #f1f2f3;
+  --color-hs-200: #e3e6e8;
+  --color-hs-300: #d6d9dc;
+  --color-hs-400: #bbc0c4;
+  --color-hs-500: #9fa6ad;
+  --color-hs-600: #6a737c;
+  --color-hs-700: #535a60;
+  --color-hs-800: #3b4045;
+  --color-hs-900: #2f3337;
+  --color-hs-950: #232629;
 }
+
 
 body {
   @apply bg-neutral-900 text-neutral-200;
