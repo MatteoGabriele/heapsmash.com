@@ -18,7 +18,7 @@ defineProps<{
       })
     "
   >
-    <p class="text-xs text-neutral-300">
+    <p class="text-xs text-black-300">
       {{ isPostAnswer ? "answered" : "asked" }}
       <NuxtTime :datetime="date" date-style="medium" time-style="short" />
     </p>

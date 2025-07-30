@@ -8,7 +8,7 @@ defineProps<{
 
 <template>
   <section
-    class="flex items-center gap-2 rounded-xl rounded-b-none flex-wrap p-4 border border-neutral-700 border-b-0"
+    class="flex items-center gap-2 rounded-xl rounded-b-none flex-wrap p-4 border border-black-600 border-b-0"
   >
     <EditorButton
       @click="editor?.chain().focus().toggleHeading({ level: 1 }).run()"

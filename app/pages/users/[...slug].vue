@@ -38,7 +38,7 @@ async function handleLogout(): Promise<void> {
     />
     <button
       @click="handleLogout"
-      class="px-4 py-2 bg-neutral-600 hover:bg-neutral-500"
+      class="px-4 py-2 bg-black-800 hover:bg-black-700"
     >
       Logout
     </button>

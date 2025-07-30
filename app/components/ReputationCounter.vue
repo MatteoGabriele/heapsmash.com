@@ -11,6 +11,6 @@ const reputation = computed<number>(() => {
     :title="`your reputation: ${reputation}`"
   >
     <span class="text-sm">{{ reputation }}</span>
-    <Icon name="ph:medal-fill" class="text-xs text-neutral-400" />
+    <Icon name="ph:medal-fill" class="text-xs text-black-300" />
   </div>
 </template>

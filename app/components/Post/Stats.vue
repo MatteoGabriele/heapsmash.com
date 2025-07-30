@@ -33,7 +33,7 @@ const votes = computed<number>(() => {
           cn({
             'border px-1.5 py-0.5 rounded-lg': isAnswered || hasAcceptedAnswer,
             ' border-emerald-800 text-emerald-500': isAnswered,
-            'bg-emerald-400 text-neutral-900': hasAcceptedAnswer,
+            'bg-emerald-400 text-black-950': hasAcceptedAnswer,
           })
         "
       >

@@ -3,7 +3,7 @@ const { data } = await useFetch("/api/feed");
 </script>
 
 <template>
-  <div class="bg-[#413516] border border-[#957932] rounded-xl text-neutral-200">
+  <div class="bg-gold-500 border border-gold-300 rounded-xl text-black-100">
     <NuxtErrorBoundary>
       <div class="p-4">
         <h2 class="mb-4 text-base font-bold">Top HackerNews Picks</h2>
@@ -13,9 +13,9 @@ const { data } = await useFetch("/api/feed");
             :key="article.title"
             class="flex gap-2"
           >
-            <Icon name="ph:arrow-square-out" class="mt-1 shrink-0" />
+            <Icon name="ph:arrow-square-out" class="mt-0.5 shrink-0" />
             <a
-              class="text-sm underline hover:text-white"
+              class="text-sm hover:underline hover:text-white"
               :href="article.link"
               target="_blank"
             >
@@ -25,7 +25,7 @@ const { data } = await useFetch("/api/feed");
         </ul>
       </div>
 
-      <div class="border-t w-full border-[#957932]"></div>
+      <div class="border-t w-full border-gold-300"></div>
 
       <div class="p-4">
         <h2 class="mb-4 text-base font-bold">
@@ -37,9 +37,9 @@ const { data } = await useFetch("/api/feed");
             :key="article.title"
             class="flex gap-2"
           >
-            <Icon name="ph:arrow-square-out" class="mt-1 shrink-0" />
+            <Icon name="ph:arrow-square-out" class="mt-0.5 shrink-0" />
             <a
-              class="text-sm underline hover:text-white"
+              class="text-sm hover:underline hover:text-white"
               :href="article.link"
               target="_blank"
             >

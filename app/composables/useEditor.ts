@@ -30,7 +30,7 @@ export function useEditor(): UseEditorReturn {
         class: cn([
           "max-w-full",
           "flex-1 p-4 rounded-xl rounded-t-none focus:outline-none",
-          "border border-neutral-700 focus:border-neutral-500",
+          "border border-black-600 focus:border-black-400",
           "resize overflow-auto",
         ]),
       },

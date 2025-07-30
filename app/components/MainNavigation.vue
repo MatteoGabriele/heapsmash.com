@@ -12,7 +12,7 @@ const user = useUser();
     <ul v-else class="flex items-center gap-2">
       <li>
         <NuxtLink
-          class="text-sm text-neutral-300 rounded-lg px-3 py-2 hover:bg-neutral-700"
+          class="text-sm text-black-200 rounded-lg px-3 py-2 hover:bg-black-800"
           to="/login"
         >
           Log in
@@ -20,7 +20,7 @@ const user = useUser();
       </li>
       <li>
         <NuxtLink
-          class="text-sm text-neutral-300 rounded-lg px-3 py-2 bg-sky-700 hover:bg-sky-600"
+          class="text-sm text-black-200 rounded-lg px-3 py-2 bg-sky-700 hover:bg-sky-600"
           to="/signup"
         >
           Sign up

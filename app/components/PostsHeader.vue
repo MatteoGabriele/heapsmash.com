@@ -12,7 +12,7 @@ const { tabs, activeTab } = usePostTabs();
     <header class="flex justify-between items-center">
       <h1 class="text-2xl first-letter:uppercase">{{ title }}</h1>
       <NuxtLink
-        class="text-sm text-neutral-300 rounded-lg px-3 py-2 bg-sky-700 hover:bg-sky-600"
+        class="text-sm text-black-200 rounded-lg px-3 py-2 bg-sky-700 hover:bg-sky-600"
         to="questions/ask"
       >
         Ask Question

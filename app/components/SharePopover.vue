@@ -28,14 +28,14 @@ function copyLink(): void {
 <template>
   <div class="relative">
     <button
-      class="text-sm text-neutral-400 hover:text-neutral-300"
+      class="text-sm text-black-300 hover:text-black-200"
       :style="buttonStyle"
       :popovertarget="uniqueId"
     >
       Share
     </button>
     <div
-      class="absolute inset-auto mt-2 p-4 shadow-xl shadow-neutral-950 rounded-md bg-neutral-700"
+      class="absolute inset-auto mt-2 p-4 shadow-xl rounded-md bg-black-700"
       ref="popoverContainer"
       :id="uniqueId"
       popover
@@ -50,7 +50,7 @@ function copyLink(): void {
             {{ label }}
           </span>
           <input
-            class="bg-neutral-900 px-3 py-1.5 text-sm border border-neutral-500 rounded-md min-w-80"
+            class="bg-black-900 px-3 py-1.5 text-sm border border-black-500 rounded-md min-w-80"
             autofocus
             name="shareUrl"
             type="text"

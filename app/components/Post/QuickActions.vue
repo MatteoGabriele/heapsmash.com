@@ -32,7 +32,7 @@ const sharePopoverLabel = computed<string>(() => {
     <li>
       <NuxtLink
         :to="`/posts/${answerId ?? postId}/edit`"
-        class="text-sm text-neutral-400 hover:text-neutral-300"
+        class="text-sm text-black-300 hover:text-black-200"
       >
         Edit
       </NuxtLink>

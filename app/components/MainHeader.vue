@@ -1,5 +1,5 @@
 <template>
-  <div class="sticky top-0 bg-neutral-900 border-b border-neutral-700">
+  <div class="sticky top-0 bg-black-950 border-b border-black-600">
     <CenterContainer as="header" class="px-4 py-3 gap-4 flex items-center">
       <Logo class="w-46 shrink-0" />
 

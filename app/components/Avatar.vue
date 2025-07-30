@@ -11,7 +11,7 @@ const { size = "sm", shape = "circle" } = defineProps<{
 <template>
   <div
     :class="
-      cn('bg-neutral-600 overflow-hidden flex items-center justify-center', {
+      cn('bg-black-700 overflow-hidden flex items-center justify-center', {
         'size-6': size === 'sm',
         'size-8': size === 'md',
         'size-10': size === 'lg',
@@ -22,10 +22,7 @@ const { size = "sm", shape = "circle" } = defineProps<{
   >
     <img v-if="image" :src="image" alt="user avatar" />
     <span v-else aria-label="user avatar">
-      <Icon
-        class="text-2xl text-neutral-300"
-        name="mdi:account-circle-outline"
-      />
+      <Icon class="text-2xl text-black-300" name="mdi:account-circle-outline" />
     </span>
   </div>
 </template>

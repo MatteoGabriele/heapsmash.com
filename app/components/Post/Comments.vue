@@ -11,7 +11,7 @@ defineProps<{
     <li
       v-for="comment in comments"
       :key="comment.id"
-      class="flex items-start gap-2 border-b border-neutral-700 py-2 first-of-type:border-t"
+      class="flex items-start gap-2 border-b border-black-600 py-2 first-of-type:border-t"
     >
       <div class="flex items-start gap-2">
         <div class="text-sm min-w-2">
@@ -20,7 +20,7 @@ defineProps<{
         <div>
           <VoteButton direction="up" variant="minimal" />
           <!-- <button
-            class="transition-colors duration-300 text-neutral-500 hover:text-red-500"
+            class="transition-colors duration-300 text-black-500 hover:text-red-500"
           >
             <Icon name="ph:flag-fill" />
           </button> -->
@@ -37,7 +37,7 @@ defineProps<{
         </NuxtLink>
 
         <NuxtTime
-          class="text-neutral-400"
+          class="text-black-400 ml-1"
           :datetime="comment.created_at"
           date-style="medium"
           time-style="short"

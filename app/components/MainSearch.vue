@@ -4,7 +4,7 @@ const query = ref<string>("");
 
 <template>
   <div
-    class="border border-neutral-700 w-full rounded-lg px-2 focus-within:border-neutral-500"
+    class="border border-black-600 w-full rounded-lg px-2 focus-within:border-black-400"
   >
     <form role="search" class="w-full">
       <label class="flex items-center">
