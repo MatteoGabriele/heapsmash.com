@@ -31,7 +31,7 @@ function nextPage(): void {
 </script>
 
 <template>
-  <PostsHeader title="Newest questions" :counter="data?.totalItems" />
+  <PostsHeader title="Newest questions" :counter="data?.totalCount" />
   <ul>
     <li v-for="post in data?.result" :key="post.id">
       <PostFeed :post="post" />
@@ -47,7 +47,7 @@ function nextPage(): void {
       prev
     </button>
 
-    <ul class="flex gap-1" v-if="data?.totalItems && data.totalItems > 1">
+    <ul class="flex gap-1" v-if="data?.totalCount && data.totalCount > 1">
       <li v-for="pageIndex in data.totalPages" :key="pageIndex">
         <button
           @click="setPage(pageIndex)"

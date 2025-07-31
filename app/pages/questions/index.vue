@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { cn } from "clsx-for-tailwind";
 import type { PostStatus } from "~/types/post";
 
 const route = useRoute();
@@ -8,7 +7,9 @@ const status = computed<PostStatus>(() => {
   return queryValue ?? "newest";
 });
 
-const currentPage = ref<number>(1);
+const currentPage = ref<number>(
+  route.query.page ? Number.parseInt(route.query.page as string) : 1
+);
 const filterOptions = reactive({
   status,
   currentPage,
@@ -44,7 +45,7 @@ function nextPage(): void {
 </script>
 
 <template>
-  <PostsHeader :title="title" :counter="data?.totalItems" />
+  <PostsHeader :title="title" :counter="data?.totalCount" />
   <ul>
     <li v-for="post in data?.result" :key="post.id">
       <PostFeed :post="post" />
@@ -60,18 +61,14 @@ function nextPage(): void {
       prev
     </button>
 
-    <ul class="flex gap-1" v-if="data?.totalItems && data.totalItems > 1">
-      <li v-for="pageIndex in data.totalPages" :key="pageIndex">
-        <button
-          @click="setPage(pageIndex)"
-          :class="
-            cn('text-xs border border-black-700 px-3 py-2 rounded-md', {
-              'bg-black-800': pageIndex === currentPage,
-            })
-          "
+    <ul class="flex gap-1" v-if="data?.totalCount && data.totalCount > 1">
+      <li v-for="page in data.totalPages" :key="page">
+        <NuxtLink
+          :to="{ name: 'questions', query: { ...route.query, page } }"
+          @click="setPage(page)"
         >
-          {{ pageIndex }}
-        </button>
+          {{ page }}
+        </NuxtLink>
       </li>
     </ul>
 
