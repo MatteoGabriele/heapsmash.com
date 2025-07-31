@@ -1,10 +1,30 @@
+import type { Reactive } from "vue";
 import type { PostFeed, PostStatus } from "~/types/post";
 import type { Vote } from "~/types/vote";
 
-export async function usePostsFeed() {
-  return useAsyncData(() => {
-    return $fetch("/api/posts");
+type UsePostsFeedOptions = {
+  itemsPerPage?: number;
+  currentPage?: number;
+  status?: PostStatus;
+  tag?: string;
+};
+
+export async function usePostsFeed(options: Reactive<UsePostsFeedOptions>) {
+  const query = computed<string>(() => {
+    console.log(createQueryStringFromObject(options));
+    return createQueryStringFromObject(options);
   });
+
+  return useAsyncData(
+    () => {
+      return $fetch(`/api/posts`, {
+        query: options,
+      });
+    },
+    {
+      watch: [query],
+    },
+  );
 }
 
 export async function usePostById(id: MaybeRef<number | string | undefined>) {
@@ -27,25 +47,25 @@ export async function usePostById(id: MaybeRef<number | string | undefined>) {
   );
 }
 
-type UsePostsWithFiltersOptions = {
-  status: PostStatus;
-  tag: string;
-};
+// type UsePostsWithFiltersOptions = {
+//   status: PostStatus;
+//   tag: string;
+// };
 
-export async function usePostsWithFilters(
-  options: MaybeRef<Partial<UsePostsWithFiltersOptions>> = {},
-) {
-  const filtersQuery = computed<string>(() => {
-    const object = unref(options);
-    return createQueryStringFromObject(object);
-  });
+// export async function usePostsWithFilters(
+//   options: MaybeRef<Partial<UsePostsWithFiltersOptions>> = {},
+// ) {
+//   const filtersQuery = computed<string>(() => {
+//     const object = unref(options);
+//     return createQueryStringFromObject(object);
+//   });
 
-  const url = computed<string>(() => `/api/posts?${filtersQuery.value}`);
+//   const url = computed<string>(() => `/api/posts?${filtersQuery.value}`);
 
-  return useFetch<PostFeed[]>(url, {
-    key: filtersQuery,
-  });
-}
+//   return useFetch<PostFeed[]>(url, {
+//     key: filtersQuery,
+//   });
+// }
 
 export type PostTab = {
   label: string;

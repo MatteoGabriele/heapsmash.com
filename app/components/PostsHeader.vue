@@ -1,7 +1,7 @@
 <script setup lang="ts">
 defineProps<{
   title: string;
-  counter?: number;
+  counter?: number | undefined | null;
 }>();
 
 const { tabs, activeTab } = usePostTabs();
