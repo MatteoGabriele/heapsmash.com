@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type Vote, Votes, type VoteType } from "~/types/vote";
+import { type Vote, type VoteType } from "~/types/vote";
 
 const { votes, initialVote = null } = defineProps<{
   votes: number;

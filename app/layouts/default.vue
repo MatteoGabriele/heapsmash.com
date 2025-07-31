@@ -13,7 +13,7 @@
         <slot />
       </main>
 
-      <aside class="hidden md:shrink-0 py-6 md:block">
+      <aside class="hidden py-6 lg:block">
         <NewsFeed class="ml-6 w-80" />
       </aside>
     </CenterContainer>

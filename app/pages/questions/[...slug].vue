@@ -43,6 +43,9 @@ const { data: userVote, refresh: refreshUserVote } = await useFetch(
   `/api/posts/${id.value}/votes`
 );
 const { updateVote } = usePostVote(id);
+const currentUserVote = computed<Vote>(() => {
+  return userVote.value?.vote as Vote;
+});
 async function handleVote(vote: Vote): Promise<void> {
   await updateVote(vote);
   await refresh();
@@ -84,9 +87,9 @@ async function handleVote(vote: Vote): Promise<void> {
       <PostVote
         @voted="handleVote"
         :votes="data.votes.upvotes - data.votes.downvotes"
-        :initial-vote="userVote?.vote as Vote"
+        :initial-vote="currentUserVote"
       />
-      <div class="flex flex-col gap-6 w-full">
+      <div class="flex flex-col gap-6 w-full overflow-auto">
         <PostBody :text="data.body" />
 
         <div class="flex justify-between gap-4">
