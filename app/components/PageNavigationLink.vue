@@ -1,13 +1,9 @@
 <script setup lang="ts">
 import { cn } from "clsx-for-tailwind";
-
-defineProps<{
-  to: string;
-}>();
 </script>
 
 <template>
-  <NuxtLink :to="to" v-slot="{ isActive, navigate, href }" custom>
+  <NuxtLink v-slot="{ isActive, navigate, href }" custom>
     <a
       :class="
         cn(

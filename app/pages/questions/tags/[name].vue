@@ -22,9 +22,10 @@ const filterOptions = computed(() => ({
   status: route.query.status as PostStatus,
 }));
 
-const { data: posts, error: postsError } = await usePostsWithFilters(
-  filterOptions
-);
+const { data: posts, error: postsError } = await useFetch("/api/posts", {
+  query: filterOptions,
+  watch: [filterOptions],
+});
 
 if (postsError.value) {
   throw createError(postsError.value);
@@ -41,9 +42,9 @@ if (postsError.value) {
       <p class="mt-2" v-if="data?.description">{{ data.description }}</p>
     </header>
     <div class="mt-8 flex justify-between">
-      <p>{{ posts?.length ?? 0 }} questions</p>
+      <p>{{ posts?.totalCount ?? 0 }} questions</p>
       <TabFilterList :active-tab="activeTab" :tabs="tabs" />
     </div>
   </div>
-  <PostFeed v-for="post in posts" :key="post.id" :post="post" />
+  <PostFeed v-for="post in posts?.result" :key="post.id" :post="post" />
 </template>
