@@ -4,31 +4,30 @@ import type { Vote } from "../../types/vote";
 
 const { params } = useRoute();
 const id = computed<string | undefined>(() => params.slug?.[0]);
-const secondaryIdentifier = computed<string | undefined>(() => {
-  return params.slug?.[1];
-});
+const postSlug = computed<string | undefined>(() => params.slug?.[1]);
+
 const hasAnswerId = computed<boolean>(() => {
-  if (secondaryIdentifier.value === undefined) {
+  if (postSlug.value === undefined) {
     return false;
   }
 
-  if (Number.isNaN(secondaryIdentifier.value)) {
+  if (Number.isNaN(postSlug.value)) {
     return false;
   }
 
   return true;
 });
 
-const { data, error, refresh } = await usePostById(id);
+const { data, error, refresh } = await useFetch(`/api/posts/${id.value}`);
 
 if (error.value) {
   throw createError(error.value);
 }
 
-if (secondaryIdentifier.value !== data.value?.slug) {
+if (postSlug.value !== data.value?.slug) {
   await navigateTo({
     path: `/questions/${id.value}/${data.value?.slug}`,
-    hash: hasAnswerId.value ? `#a${secondaryIdentifier.value}` : "",
+    hash: hasAnswerId.value ? `#a${postSlug.value}` : "",
     replace: true,
   });
 }

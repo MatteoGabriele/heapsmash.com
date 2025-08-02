@@ -2,7 +2,8 @@
 import type { PostStatus } from "~/types/post";
 
 const route = useRoute();
-const { data, error } = await useTagByName(route.params.name as string);
+const tagName = computed<string>(() => route.params.name as string);
+const { data, error } = await useTagByName(tagName);
 
 if (error.value) {
   throw createError(error.value);
@@ -11,11 +12,11 @@ if (error.value) {
 if (!data.value) {
   throw createError({
     statusCode: 404,
-    statusMessage: `No tag found named "${route.params.name}"`,
+    statusMessage: `No tag found named "${tagName.value}"`,
   });
 }
 
-const { tabs, activeTab } = useTagTabs();
+const { tabs, activeTab } = useTagTabs(`/questions/tagged/${tagName.value}`);
 
 const filterOptions = computed(() => ({
   tag: route.params.name as string,
