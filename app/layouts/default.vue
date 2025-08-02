@@ -12,7 +12,7 @@
       </main>
 
       <aside class="hidden py-6 lg:block">
-        <NewsFeed class="ml-6 w-80 mr-4" />
+        <NewsFeed class="ml-6 w-[300px] mr-4" />
       </aside>
     </CenterContainer>
   </div>
