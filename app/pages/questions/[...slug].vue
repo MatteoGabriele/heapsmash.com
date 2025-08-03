@@ -4,14 +4,19 @@ import { useI18n } from "kashyyyk";
 const { params } = useRoute();
 const id = computed<string | undefined>(() => params.slug?.[0]);
 
-const { data, error } = await useFetch(`/api/posts/${id.value}`);
+const { data, error, status } = useLazyFetch(`/api/posts/${id.value}`, {
+  server: false,
+});
 
 if (error.value) {
   throw createError(error.value);
 }
 
-const { data: answers, error: errorAnswers } = await useFetch(
-  `/api/posts/${id.value}/answers`
+const { data: answers, error: errorAnswers } = useLazyFetch(
+  `/api/posts/${id.value}/answers`,
+  {
+    server: false,
+  }
 );
 
 if (errorAnswers.value) {
@@ -33,7 +38,12 @@ const { t } = useI18n({
 </script>
 
 <template>
-  <section v-if="data" class="p-4 md:px-6" aria-labelledby="question_title">
+  <div v-if="status === 'pending'">loading...</div>
+  <section
+    v-else-if="data"
+    class="p-4 md:px-6"
+    aria-labelledby="question_title"
+  >
     <header class="border-b pb-4 border-b-black-600">
       <h2 id="question_title" class="text-2xl">{{ data.title }}</h2>
       <ul class="flex gap-2 mt-2 text-sm text-black-300">
