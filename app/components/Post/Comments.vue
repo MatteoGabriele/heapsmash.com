@@ -1,15 +1,19 @@
 <script setup lang="ts">
-import type { PostComment } from "~/types/post";
-
-defineProps<{
-  comments: PostComment[];
+const props = defineProps<{
+  postId: number;
 }>();
+
+const { data, error } = await useFetch(`/api/posts/${props.postId}/comments`);
+
+if (error.value) {
+  throw createError(error.value);
+}
 </script>
 
 <template>
   <ul>
     <li
-      v-for="comment in comments"
+      v-for="comment in data"
       :key="comment.id"
       class="flex items-start gap-2 border-b border-black-600 py-2 first-of-type:border-t"
     >

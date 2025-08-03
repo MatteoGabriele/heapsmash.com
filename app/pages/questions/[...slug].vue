@@ -21,9 +21,6 @@ if (errorAnswers.value) {
 const { data: votes } = useLazyFetch(`/api/posts/${id.value}/votes`, {
   server: false,
 });
-const { data: comments } = useLazyFetch(`/api/posts/${id.value}/comments`, {
-  server: false,
-});
 
 const { t } = useI18n({
   en: {
@@ -82,7 +79,8 @@ const { t } = useI18n({
         </div>
 
         <!-- <Tags v-if="data.question_tags.length" :tags="data.question_tags" /> -->
-        <PostComments :comments="comments" v-if="comments" />
+
+        <LazyPostComments hydrate-on-visible :post-id="data.id" />
       </div>
     </div>
 
