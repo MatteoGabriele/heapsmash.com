@@ -1,25 +1,5 @@
 import type { Vote } from "~/types/vote";
 
-export async function usePostById(id: MaybeRef<number | string | undefined>) {
-  const idRef = ref(id);
-
-  if (idRef.value === undefined) {
-    throw createError({
-      statusMessage: "Cannot find this question",
-      statusCode: 404,
-    });
-  }
-
-  return useAsyncData(
-    () => {
-      return $fetch(`/api/posts/${idRef.value}`);
-    },
-    {
-      watch: [idRef],
-    },
-  );
-}
-
 export type PostTab = {
   label: string;
   to: string;
@@ -52,11 +32,11 @@ export function usePostTabs(): UsePostTabsReturn {
   };
 }
 
-export function useTagTabs(): UsePostTabsReturn {
+export function useTagTabs(url: string): UsePostTabsReturn {
   const route = useRoute();
 
   const tabs = computed<PostTab[]>(() => {
-    const path = `/questions/tags/${route.params.name}?status=`;
+    const path = `${url}?status=`;
     return [
       { label: "Newest", to: `${path}newest` },
       { label: "Answered", to: `${path}answered` },

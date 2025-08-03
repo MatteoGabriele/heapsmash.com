@@ -9,13 +9,13 @@
           </PageNavigationLink>
         </li>
         <li>
-          <PageNavigationLink to="/questions">
+          <PageNavigationLink active-on-nested to="/questions">
             <Icon name="ph:chats-fill" class="text-lg" />
             Questions
           </PageNavigationLink>
         </li>
         <li>
-          <PageNavigationLink to="/questions/tags">
+          <PageNavigationLink to="/tags">
             <Icon name="ph:tag-fill" class="text-lg" />
             Tags
           </PageNavigationLink>

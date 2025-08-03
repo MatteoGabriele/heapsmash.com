@@ -3,7 +3,7 @@ const { data } = await useFetch("/api/feed");
 </script>
 
 <template>
-  <div class="bg-gold-500 border border-gold-300 rounded-xl text-black-100">
+  <div class="bg-gold-500 border border-gold-300 rounded-md text-black-100">
     <NuxtErrorBoundary>
       <div class="p-4">
         <h2 class="mb-4 text-base font-bold">Top HackerNews Picks</h2>
