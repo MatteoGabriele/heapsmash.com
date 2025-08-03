@@ -18,8 +18,12 @@ if (errorAnswers.value) {
   throw createError(errorAnswers.value);
 }
 
-const { data: votes } = useLazyFetch(`/api/posts/${id.value}/votes`);
-const { data: comments } = useLazyFetch(`/api/posts/${id.value}/comments`);
+const { data: votes } = useLazyFetch(`/api/posts/${id.value}/votes`, {
+  server: false,
+});
+const { data: comments } = useLazyFetch(`/api/posts/${id.value}/comments`, {
+  server: false,
+});
 
 const { t } = useI18n({
   en: {
