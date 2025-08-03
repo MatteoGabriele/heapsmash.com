@@ -1,4 +1,4 @@
-import { serverSupabaseClient, serverSupabaseUser } from "#supabase/server";
+import { serverSupabaseClient } from "#supabase/server";
 import type { Database } from "~/types/database";
 
 export default defineEventHandler(async (event) => {
@@ -10,21 +10,18 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  const user = await serverSupabaseUser(event);
-
-  if (!user) {
-    throw createError({
-      statusCode: 401,
-    });
-  }
-
   const supabase = await serverSupabaseClient<Database>(event);
 
   const { data, error } = await supabase
-    .from("votes")
-    .select("*")
-    .eq("target_id", Number(id))
-    .eq("target_type", "question");
+    .from("answers")
+    .select(`
+    id,
+    body,
+    created_at,
+    user:profiles ( id, username, avatar_url )
+  `)
+    .eq("question_id", Number(id))
+    .order("created_at", { ascending: true });
 
   if (error) {
     throw createError({ statusMessage: error.message });

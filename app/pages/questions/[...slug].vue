@@ -1,56 +1,31 @@
 <script setup lang="ts">
 import { useI18n } from "kashyyyk";
-import type { Vote } from "../../types/vote";
 
 const { params } = useRoute();
 const id = computed<string | undefined>(() => params.slug?.[0]);
-const secondaryIdentifier = computed<string | undefined>(() => {
-  return params.slug?.[1];
-});
-const hasAnswerId = computed<boolean>(() => {
-  if (secondaryIdentifier.value === undefined) {
-    return false;
-  }
 
-  if (Number.isNaN(secondaryIdentifier.value)) {
-    return false;
-  }
-
-  return true;
-});
-
-const { data, error, refresh } = await usePostById(id);
+const { data, error } = await useFetch(`/api/posts/${id.value}`);
 
 if (error.value) {
   throw createError(error.value);
 }
 
-if (secondaryIdentifier.value !== data.value?.slug) {
-  await navigateTo({
-    path: `/questions/${id.value}/${data.value?.slug}`,
-    hash: hasAnswerId.value ? `#a${secondaryIdentifier.value}` : "",
-    replace: true,
-  });
+const { data: answers, error: errorAnswers } = await useFetch(
+  `/api/posts/${id.value}/answers`
+);
+
+if (errorAnswers.value) {
+  throw createError(errorAnswers.value);
 }
+
+const { data: votes } = useLazyFetch(`/api/posts/${id.value}/votes`);
+const { data: comments } = useLazyFetch(`/api/posts/${id.value}/comments`);
 
 const { t } = useI18n({
   en: {
     answers: "0 Answers | 1 Answer | {count} Answers",
   },
 });
-
-const { data: userVote, refresh: refreshUserVote } = await useFetch(
-  `/api/posts/${id.value}/votes`
-);
-const { updateVote } = usePostVote(id);
-const currentUserVote = computed<Vote>(() => {
-  return userVote.value?.vote as Vote;
-});
-async function handleVote(vote: Vote): Promise<void> {
-  await updateVote(vote);
-  await refresh();
-  await refreshUserVote();
-}
 </script>
 
 <template>
@@ -61,6 +36,7 @@ async function handleVote(vote: Vote): Promise<void> {
         <li>
           Asked
           <NuxtTime
+            v-if="data.created_at"
             class="text-white"
             :datetime="data.created_at"
             date-style="medium"
@@ -84,30 +60,30 @@ async function handleVote(vote: Vote): Promise<void> {
     </header>
 
     <div class="py-6 px-2 flex gap-4">
-      <PostVote
+      <!-- <PostVote
         @voted="handleVote"
         :votes="data.votes.upvotes - data.votes.downvotes"
         :initial-vote="currentUserVote"
-      />
+      /> -->
       <div class="flex flex-col gap-6 w-full overflow-auto">
         <PostBody :text="data.body" />
 
         <div class="flex justify-between gap-4">
           <PostQuickActions :post-id="data.id" />
-          <PostUserCard
+          <!-- <PostUserCard
             is-post-owner
             :date="data.created_at"
             :user="data.user"
-          />
+          /> -->
         </div>
 
-        <Tags v-if="data.tags.length" :tags="data.tags" />
+        <!-- <Tags v-if="data.question_tags.length" :tags="data.question_tags" /> -->
 
-        <PostComments :comments="data.comments" v-if="data.comments" />
+        <!-- <PostComments :comments="comments" v-if="comments" /> -->
       </div>
     </div>
 
-    <section aria-labelledby="answers_title" class="mt-12 px-2">
+    <!-- <section aria-labelledby="answers_title" class="mt-12 px-2">
       <h2 id="answers_title" class="text-xl">
         {{ t("answers", { count: data.answers.length }) }}
       </h2>
@@ -150,7 +126,7 @@ async function handleVote(vote: Vote): Promise<void> {
           </div>
         </li>
       </ul>
-    </section>
+    </section> -->
 
     <PostAnswerForm class="mt-12" :post-id="data.id" />
   </section>

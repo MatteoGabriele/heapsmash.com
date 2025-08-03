@@ -2,7 +2,7 @@
 import type { PostComment } from "~/types/post";
 
 defineProps<{
-  comments: PostComment[];
+  comments: any[];
 }>();
 </script>
 
