@@ -1,5 +1,6 @@
 import { serverSupabaseClient } from "#supabase/server";
 import type { Database } from "~/types/database";
+import type { PostComment } from "~/types/post";
 
 export default defineEventHandler(async (event) => {
   const id = getRouterParam(event, "id");
@@ -18,12 +19,11 @@ export default defineEventHandler(async (event) => {
       id,
       body,
       created_at,
-      profiles!user_id ( id, username, avatar_url )
+      user:user_id ( id, username, avatar_url )
     `)
     .eq("question_id", Number(id))
-    .order("created_at", { ascending: true });
-
-  console.log(data);
+    .order("created_at", { ascending: true })
+    .overrideTypes<PostComment[]>();
 
   if (error) {
     throw createError({ statusMessage: error.message });

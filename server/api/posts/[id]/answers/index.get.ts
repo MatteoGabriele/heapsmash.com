@@ -15,11 +15,11 @@ export default defineEventHandler(async (event) => {
   const { data, error } = await supabase
     .from("answers")
     .select(`
-    id,
-    body,
-    created_at,
-    user:profiles ( id, username, avatar_url )
-  `)
+      id,
+      body,
+      created_at,
+      user:profiles ( id, username, avatar_url )
+    `)
     .eq("question_id", Number(id))
     .order("created_at", { ascending: true });
 
