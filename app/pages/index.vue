@@ -1,15 +1,16 @@
 <script setup lang="ts">
 const user = useSupabaseUser();
-
-onMounted(() => {
+const userName = computed<string | undefined>(() => {
   if (!user.value) {
-    navigateTo("/questions");
+    return;
   }
+  const data = user.value.user_metadata;
+  return data.preferred_username || data.user_name || data.name;
 });
 </script>
 
 <template>
-  <div class="p-4 md:pl-6">
-    <h1>Welcome back, {{ user?.user_metadata.full_name }}</h1>
+  <div>
+    <p>Welcome back, {{ userName }}</p>
   </div>
 </template>
