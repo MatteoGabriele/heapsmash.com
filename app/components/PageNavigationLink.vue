@@ -1,25 +1,39 @@
 <script setup lang="ts">
 import { cn } from "clsx-for-tailwind";
 
+defineOptions({
+  inheritAttrs: false,
+});
+
 const props = defineProps<{
-  to: string;
+  to?: string;
   activeOnNested?: boolean;
 }>();
 
 const route = useRoute();
 const isActiveOnNested = computed<boolean>(() => {
-  return route.path.startsWith(props.to);
+  return props.to !== undefined && route.path.startsWith(props.to);
 });
+
+const baseClasses =
+  "flex w-full hover:bg-black-900 p-2 rounded-l-lg items-center gap-2 text-xs";
 </script>
 
 <template>
-  <NuxtLink :to="to" v-slot="{ isActive, navigate, href }" custom>
+  <NuxtLink
+    v-if="to"
+    :to="to"
+    v-slot="{ isActive, navigate, href }"
+    custom
+    v-bind="$attrs"
+  >
     <a
       :class="
-        cn(
-          'flex hover:bg-black-900 p-2 rounded-l-lg items-center gap-2 text-xs',
-          { 'bg-black-700': activeOnNested ? isActiveOnNested : isActive }
-        )
+        cn(baseClasses, {
+          'bg-black-700 hover:bg-black-600': activeOnNested
+            ? isActiveOnNested
+            : isActive,
+        })
       "
       :href="href"
       @click="navigate"
@@ -27,4 +41,7 @@ const isActiveOnNested = computed<boolean>(() => {
       <slot />
     </a>
   </NuxtLink>
+  <button v-else v-bind="$attrs" :class="baseClasses">
+    <slot />
+  </button>
 </template>
