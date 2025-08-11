@@ -45,7 +45,15 @@ const { updateVote } = usePostVote(id);
 const currentUserVote = computed<Vote>(() => {
   return userVote.value?.vote as Vote;
 });
+
+const loginModal = useTemplateRef("login");
+const user = useSupabaseUser();
 async function handleVote(vote: Vote): Promise<void> {
+  if (!user.value) {
+    loginModal.value?.show();
+    return;
+  }
+
   await updateVote(vote);
   await refresh();
   await refreshUserVote();
@@ -53,6 +61,7 @@ async function handleVote(vote: Vote): Promise<void> {
 </script>
 
 <template>
+  <LoginModal ref="login" />
   <section v-if="data" class="p-4 md:px-6" aria-labelledby="question_title">
     <header class="border-b pb-4 border-b-black-600">
       <h2 id="question_title" class="text-2xl">{{ data.title }}</h2>
