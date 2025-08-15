@@ -17,8 +17,6 @@ const isPending = ref<boolean>(false);
 const errorMessage = ref<string | null>(null);
 const redirectTo = useRoute().fullPath;
 
-console.log(redirectTo);
-
 async function handleSignIn(): Promise<void> {
   isPending.value = true;
   errorMessage.value = null;
@@ -41,7 +39,7 @@ async function handleSignIn(): Promise<void> {
 <template>
   <dialog
     ref="dialog"
-    class="border-0 bg-transparent w-full h-full p-0 text-black-100 backdrop:bg-black-800/95"
+    class="border-0 bg-transparent w-full h-full p-0 text-black-100 backdrop:bg-black-950/90"
     @close="closeModal"
   >
     <div
